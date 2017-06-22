@@ -168,52 +168,52 @@
       value: url
     });
     
-    // var gitmentConfig = "undefined";
-    // if (gitmentConfig != "undefined") {
-    //   var gitment = new Gitment({
-    //     owner: "undefined",
-    //     repo: "undefined",
-    //     oauth: {
-    //       client_id: "undefined",
-    //       client_secret: "undefined"
-    //     },
-    //     theme: {
-    //       render(state, instance) {
-    //         const container = document.createElement('div')
-    //         container.lang = "en-US"
-    //         container.className = 'gitment-container gitment-root-container'
-    //         container.appendChild(instance.renderHeader(state, instance))
-    //         container.appendChild(instance.renderEditor(state, instance))
-    //         container.appendChild(instance.renderComments(state, instance))
-    //         container.appendChild(instance.renderFooter(state, instance))
-    //         return container;
-    //       }
-    //     }
-    //   })
-    //   gitment.render(document.getElementById('comments'))
-    // }
+    var gitmentConfig = "Even";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        owner: "Even",
+        repo: "neareven.github.io",
+        oauth: {
+          client_id: "471dc10bc2af0a8ff63f",
+          client_secret: "318e13cb64b29bdd9732acab349f528c252664da"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
 
-  if (theme.disqus || config.disqus_shortname){ 
-    <section id="comments">
-      <div id="comments"></div>
-<script>
+//   if (theme.disqus || config.disqus_shortname){ 
+//     <section id="comments">
+//       <div id="comments"></div>
+// <script>
 
-(function() { 
-var d = document, s = d.createElement('script');
-s.src = 'https://neareven.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </section>
-  }
+// (function() { 
+// var d = document, s = d.createElement('script');
+// s.src = 'https://neareven.disqus.com/embed.js';
+// s.setAttribute('data-timestamp', +new Date());
+// (d.head || d.body).appendChild(s);
+// })();
+// </script>
+// <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+//       </script>
+//       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+//     </section>
+//   }
 
 
-  })();
-</script>
+//   })();
+// </script>
 
     <div class="scroll-top">
   <span class="arrow-icon"></span>
