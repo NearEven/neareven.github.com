@@ -42,76 +42,58 @@
   </div>
 </header>
 
-    <main class="app-body">
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/06/23/02-ios-tangram/">初识阿里Tangram</a>
-      </h2>
-      <p class="article-date">2017-06-23</p>
-      
-        
-  <span class="tag-code">ios</span>
+    <div id="article-banner">
+  <h2>Archives</h2>
+  <p class="post-date">文章归档</p>
+</div>
+<main class="app-body" id="archives">
 
-  <span class="tag-code">tangram</span>
 
-      
-      <div class="article-summary">
-        
-          EventBus:事件总线,提供组件/布局/tangramView之间的通信渠道Helper: 提供数据Model到ViewModel, ViewModel到View之间的转换Core: 提供复用回收机制Layout: 布局/组件摆放
-页面/卡片/组件
-卡片: 负责布局逻辑,对组件进行组合布 ...
-        
+
+  <section class="time-section">
+  <h1 class="section-year">
+    2017
+  </h1>
+  <div class="section-list">
+    
+    
+      <div class="section-list-item">
+        <a href="/2017/06/23/02-ios-tangram/" class="archive-title">初识阿里Tangram</a>
+        <p class="archive-date">06-23</p>
       </div>
-      <a class="more" href="/2017/06/23/02-ios-tangram/"></a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/06/21/html-01/">html【元素一箩筐】</a>
-      </h2>
-      <p class="article-date">2017-06-21</p>
-      
-        
-  <span class="tag-code">html</span>
-
-      
-      <div class="article-summary">
-        
-          html %0.0 元素一箩筐
-&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot;&gt;:图片插入
-
-&lt;a href=&quot;../lon ...
-        
+    
+      <div class="section-list-item">
+        <a href="/2017/06/21/html-01/" class="archive-title">html【元素一箩筐】</a>
+        <p class="archive-date">06-21</p>
       </div>
-      <a class="more" href="/2017/06/21/html-01/"></a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2016/06/10/hello-world/">Hello World</a>
-      </h2>
-      <p class="article-date">2016-06-10</p>
-      
-        
-  <span class="tag-code">Movies</span>
+    
+  </div>
+</section>
 
-  <span class="tag-code">Life</span>
-
-      
-      <div class="article-summary">
-        
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer ...
-        
+  <section class="time-section">
+  <h1 class="section-year">
+    2016
+  </h1>
+  <div class="section-list">
+    
+    
+      <div class="section-list-item">
+        <a href="/2016/06/10/hello-world/" class="archive-title">Hello World</a>
+        <p class="archive-date">06-10</p>
       </div>
-      <a class="more" href="/2016/06/10/hello-world/"></a>
-    </article>
-  
+    
+  </div>
+</section>
 
-  
 </main>
 
-
+<script>
+  (function () {
+    var url = 'https://neareven.github.io/tags/tangram/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
+  })();
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

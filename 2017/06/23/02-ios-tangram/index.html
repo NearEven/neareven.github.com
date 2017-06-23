@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="null">
+  <meta name="keyword" content="undefined">
+  <title>
+    
+      初识阿里Tangram | Even&#39;s home
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/[object Object].min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  <script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Even's home</span>
+    </a>
+    <ul class="right-list">
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>初识阿里Tangram</h2>
+  <p class="post-date">2017-06-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><p>EventBus:事件总线,提供组件/布局/tangramView之间的通信渠道<br>Helper: 提供数据Model到ViewModel, ViewModel到View之间的转换<br>Core: 提供复用回收机制<br>Layout: 布局/组件摆放</p>
+<p>页面/卡片/组件</p>
+<p>卡片: 负责布局逻辑,对组件进行组合布局,只声明布局方式,不提供布局细节,由header/footer/body/style[样式,组件间隔等]组成</p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><pre><code>1. 注册tangram组件:两种类型:文字与图片
+&gt; TangramSingleImageElement: 图片类型
+&gt; TangramSimpleTextElement: 文字类型
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[TangramDefaultItemModelFactory registElementType:@&quot;1&quot; className:@&quot;TangramSingleImageElement&quot;];</div><div class="line">	[TangramDefaultItemModelFactory registElementType:@&quot;2&quot; className:@&quot;TangramSimpleTextElement&quot;];</div></pre></td></tr></table></figure>
+
+2. 读取json数据,使用helper解析实例
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> //获取数据</div><div class="line">NSString *mockDataPath = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@&quot;TangramMock&quot; ofType:@&quot;json&quot;] encoding:NSUTF8StringEncoding error:nil];</div><div class="line">NSDictionary *dict = [mockDataPath objectFromJSONString];</div><div class="line">self.layoutModelArray = [[dict objectForKey:@&quot;data&quot;] objectForKey:@&quot;cards&quot;];</div><div class="line">//使用helper解析成layout实例</div><div class="line">self.layoutArray = [TangramDefaultDataSourceHelper layoutsWithArray:self.layoutModelArray];</div></pre></td></tr></table></figure>
+
+3. 实现``TangramDataSource Delegate``
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">//返回layout个数:卡片个数</div><div class="line">- (NSUInteger)numberOfLayoutsInTangramView:(TangramView *)view</div><div class="line">&#123;</div><div class="line">    return self.layoutModelArray.count;</div><div class="line">&#125;</div><div class="line">//返回layout的实例:实例内容有哪些</div><div class="line">- (UIView&lt;TangramLayoutProtocol&gt; *)layoutInTangramView:(TangramView *)view atIndex:(NSUInteger)index</div><div class="line">&#123;</div><div class="line">    return [self.layoutArray objectAtIndex:index];</div><div class="line">&#125;</div><div class="line">//返回某一个layout中itemModel的个数:一个卡片中组件的个数</div><div class="line">- (NSUInteger)numberOfItemsInTangramView:(TangramView *)view forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout</div><div class="line">&#123;</div><div class="line">    return layout.itemModels.count;</div><div class="line">&#125;</div><div class="line">//返回layout中指定index的itemModel实例</div><div class="line">- (NSObject&lt;TangramItemModelProtocol&gt; *)itemModelInTangramView:(TangramView *)view forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout atIndex:(NSUInteger)index</div><div class="line">&#123;</div><div class="line">    return [layout.itemModels objectAtIndex:index];;</div><div class="line">&#125;</div><div class="line">//根据Model生成View</div><div class="line">//以上的方法在调用Tangram的reload方法后就会执行，而这个方法是按需加载</div><div class="line">- (UIView *)itemInTangramView:(TangramView *)view withModel:(NSObject&lt;TangramItemModelProtocol&gt; *)model forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout atIndex:(NSUInteger)index</div><div class="line">&#123;</div><div class="line">    //先尝试找可以复用的View，有的话就赋值，没有的话就生成一个</div><div class="line">    UIView *reuseableView = [view dequeueReusableItemWithIdentifier:model.reuseIdentifier];</div><div class="line">    </div><div class="line">    if (reuseableView) &#123;</div><div class="line">        reuseableView =  [TangramDefaultDataSourceHelper refreshElement:reuseableView byModel:model];</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        reuseableView =  [TangramDefaultDataSourceHelper elementByModel:model];</div><div class="line">    &#125;</div><div class="line">    return reuseableView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+4. 创建tangram实例
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	-(TangramView *)tangramView</div><div class="line">&#123;</div><div class="line">    if (nil == _tangramView) &#123;</div><div class="line">        _tangramView = [[TangramView alloc]init];</div><div class="line">        _tangramView.frame = self.view.bounds;</div><div class="line">        //要设置datasouce delegate</div><div class="line">        [_tangramView setDataSource:self];</div><div class="line">        _tangramView.backgroundColor = [UIColor whiteColor];</div><div class="line">        [self.view addSubview:_tangramView];</div><div class="line">    &#125;</div><div class="line">    return _tangramView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>刷新视图</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.tangramView reloadData];</div></pre></td></tr></table></figure>
+<h2 id="TangramDragableLayout"><a href="#TangramDragableLayout" class="headerlink" title="TangramDragableLayout"></a>TangramDragableLayout</h2><p>可拖动的item,<br><figure class="highlight plain"><figcaption><span>*fixLabyout = [[TangramDragableLayout alloc] init];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fixLabyout.alignType = TopRight;</div><div class="line">fixLabyout.offsetX = 0;</div><div class="line">fixLabyout.offsetY = 100;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">alignType: 设置位置类型</div><div class="line">typedef NS_ENUM(NSInteger, FixAlignType)</div><div class="line">&#123;</div><div class="line">    TopLeft = 0,		上左</div><div class="line">    TopRight,			上右</div><div class="line">    BottomLeft,			下左</div><div class="line">    BottomRight			下右</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>##TangramViewDatasource</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 返回item的个数</div><div class="line">- (NSUInteger)numberOfLayoutsInTangramView:(TangramView *)view;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// item复用(与cell类似)</div><div class="line">- (UIView *)itemInTangramView:(TangramView *)view withModel:(NSObject&lt;TangramItemModelProtocol&gt; *)model forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout atIndex:(NSUInteger)index&#123;</div><div class="line">    DemoItem *item = (DemoItem *)[view dequeueReusableItemWithIdentifier:model.reuseIdentifier];</div><div class="line">    if (!item) &#123;</div><div class="line">#warning 1: frame invalid</div><div class="line">        item = [[DemoItem alloc] initWithFrame:CGRectMake(0, 0, 220, 20) reuseIdentifier:model.reuseIdentifier];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line">    // 添加item的subview元素</div><div class="line">    UILabel *testLabel = [item viewWithTag:1001];</div><div class="line">    if (!testLabel) &#123;</div><div class="line">        testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];</div><div class="line">        testLabel.textColor = [UIColor redColor];</div><div class="line">        testLabel.backgroundColor = [UIColor whiteColor];</div><div class="line">        testLabel.tag = 1001;</div><div class="line">        [item addSubview:testLabel];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    testLabel.text = [NSString stringWithFormat:@&quot;%ld&quot;,index];</div><div class="line"></div><div class="line">    return item;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// </div><div class="line">- (NSUInteger)numberOfItemsInTangramView:(TangramView *)view forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// fixModel要实现TangramItemModelProtocol协议</div><div class="line">- (NSObject&lt;TangramItemModelProtocol&gt; *)itemModelInTangramView:(TangramView *)view forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout atIndex:(NSUInteger)index&#123;</div><div class="line">    DemoFixModel *fixModel = [[DemoFixModel alloc] init];</div><div class="line">    return fixModel;</div><div class="line">&#125;</div></pre></td></tr></table></figure></section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <span class="tag-code">ios</span>
+
+  <span class="tag-code">tangram</span>
+
+      </div>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    <div id="comments"></div>
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://neareven.github.io/2017/06/23/02-ios-tangram/';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
+
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: url
+    });
+    
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || '';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
