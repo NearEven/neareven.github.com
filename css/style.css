@@ -6,6 +6,9 @@
   background: #42b983;
   color: #fff;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -251,6 +254,27 @@ h2.article-head {
   padding: 5px;
   box-shadow: 0 0 1px #e3e3e3;
 }
+.image-view-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+.image-view-wrap .image-view-inner {
+  position: relative;
+}
+.image-view-wrap img {
+  display: block;
+  margin: 0 auto;
+  cursor: zoom-out;
+  transition: all 0.3s ease-in-out;
+}
+.wrap-active {
+  background-color: rgba(255,255,255,0.9);
+}
 .scroll-top {
   cursor: pointer;
   opacity: 0;
@@ -263,7 +287,9 @@ h2.article-head {
   padding: 5px;
   background-color: #42b983;
   border-radius: 20px;
-  transition: opacity 0.5s ease;
+  transform: translate(80px, 0);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.12), 0 3px 3px 0 rgba(0,0,0,0.24);
 }
 .arrow-icon {
   background-image: url("images/top.png");
@@ -274,6 +300,7 @@ h2.article-head {
 }
 .opacity {
   opacity: 1;
+  transform: translate(0, 0);
 }
 .header {
   background: none;
@@ -303,7 +330,7 @@ h2.article-head {
   max-width: 1200px;
   height: 40px;
   margin: 0 auto;
-  padding: 10px 60px;
+  padding: 10px 40px;
   position: relative;
 }
 @media screen and (max-width: 480px) {
@@ -326,6 +353,7 @@ h2.article-head {
   font-weight: 500;
   color: #fff;
   font-size: 1.5em;
+  line-height: 40px;
 }
 .right-list {
   list-style: none;
@@ -383,7 +411,7 @@ h2.article-head {
   width: 100%;
   overflow: hidden;
   max-height: 0;
-  background: #fff;
+  background: rgba(255,255,255,0.98);
   -webkit-transition: max-height 0.2s ease;
   transition: max-height 0.2s ease;
 }
@@ -449,7 +477,8 @@ h2.article-head {
 }
 .markdown-content,
 .article-summary {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .markdown-content pre,
 .article-summary pre,
@@ -487,7 +516,7 @@ h2.article-head {
 }
 .markdown-content h1,
 .article-summary h1 {
-  font-size: 1.6em;
+  font-size: 1.8em;
 }
 .markdown-content h2,
 .article-summary h2 {
@@ -528,12 +557,16 @@ h2.article-head {
   border-top-right-radius: 2px;
 }
 .markdown-content ul,
-.article-summary ul {
+.article-summary ul,
+.markdown-content ol,
+.article-summary ol {
   overflow: auto;
   margin: 15px 0;
 }
 .markdown-content ul li,
-.article-summary ul li {
+.article-summary ul li,
+.markdown-content ol li,
+.article-summary ol li {
   padding: 5px 0;
 }
 .markdown-content img,
@@ -541,6 +574,7 @@ h2.article-head {
   max-width: 100%;
   display: block;
   margin: 20px auto;
+  cursor: zoom-in;
 }
 .markdown-content figure,
 .article-summary figure {
@@ -563,7 +597,41 @@ h2.article-head {
   padding: 5px 10px 0;
   line-height: 15px;
   height: 15px;
-  font-weight: 600;
+  font-weight: 500;
+}
+.markdown-content > table,
+.article-summary > table {
+  width: 100%;
+}
+.markdown-content > table thead,
+.article-summary > table thead {
+  background-color: #42b983;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e5e5e5;
+}
+.markdown-content > table thead th,
+.article-summary > table thead th {
+  padding: 5px 10px;
+  color: #fff;
+}
+.markdown-content > table tbody tr:nth-child(even),
+.article-summary > table tbody tr:nth-child(even) {
+  background: #e6eed6;
+}
+.markdown-content > table tbody tr:nth-child(odd),
+.article-summary > table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+.markdown-content > table tbody tr td,
+.article-summary > table tbody tr td {
+  padding: 5px 10px;
+}
+.markdown-content hr,
+.article-summary hr {
+  border: none;
+  border-bottom: 1px dashed #e5e5e5;
+  margin: 30px 0;
 }
 #tag-cloud {
   margin: 30px 0;
@@ -685,17 +753,12 @@ h2.article-head {
 }
 #about-banner:after {
   position: absolute;
-  z-index: 180;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   content: '';
-  transition: background-color 0.5s ease-out 2s;
-  -webkit-animation-name: animate-bg;
-  -webkit-animation-duration: 20s;
-  -webkit-animation-iteration-count: infinite;
-  opacity: 0.15;
+  opacity: 0.25;
   background: url("images/escheres.png");
   background-color: rgba(0,0,0,0.05);
 }
@@ -707,14 +770,12 @@ h2.article-head {
 .author {
   margin-top: -50px;
   width: 100%;
-  z-index: 300;
   background: #f8f8f8;
   text-align: center;
   padding: 0 1em 30px 1em;
   box-sizing: border-box;
 }
 .author .head {
-  z-index: 300;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -773,6 +834,76 @@ h2.article-head {
 }
 .author .share-icons .icon-twitter {
   color: #2aa9e0;
+}
+.project-app {
+  max-width: 1020px;
+  min-width: 300px;
+  padding: 1em 0;
+}
+.card-container {
+  margin: 30px auto;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 960px) {
+  .card-container {
+    width: 660px;
+  }
+}
+@media screen and (max-width: 660px) {
+  .card-container {
+    width: 320px;
+  }
+}
+.card-container .project-card {
+  width: 320px;
+  height: 160px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.card-container .project-card .card-wrap {
+  box-sizing: border-box;
+  height: 100%;
+  display: block;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  color: #34495e;
+  transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+.card-container .project-card .card-wrap:hover {
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.15);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-container .project-card .card-wrap .card-header {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.card-container .project-card .card-wrap .card-title {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+.card-container .project-card .card-wrap .card-footer {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  padding: 0 20px;
+  bottom: 20px;
+  left: 0;
+}
+.card-container .project-card .card-wrap .card-footer span:first-child {
+  padding-right: 20px;
+}
+.card-container .project-card .card-wrap .card-footer span .fa {
+  padding-right: 5px;
 }
 @-moz-keyframes shine {
   0%, 100% {
