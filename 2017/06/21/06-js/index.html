@@ -103,18 +103,50 @@
   <article class="post-article">
     <section class="markdown-content"><p>## </p>
 <blockquote>
-<p>  基本类型/引用类型<br>  执行环境(全局与局部)<br>  垃圾收集(arc区别)</p>
+<p>  基本类型/引用类型<br>  执行环境(全局与局部)<br>  垃圾回收(arc)</p>
 </blockquote>
-<h3 id="一-基本类型-Undefined-Null-Boolean-Number-String"><a href="#一-基本类型-Undefined-Null-Boolean-Number-String" class="headerlink" title="一. 基本类型: Undefined/Null/Boolean/Number/String"></a>一. 基本类型: Undefined/Null/Boolean/Number/String</h3><h3 id="二-引用类型-通过指针访问对象在内存中的位置"><a href="#二-引用类型-通过指针访问对象在内存中的位置" class="headerlink" title="二. 引用类型: 通过指针访问对象在内存中的位置"></a>二. 引用类型: 通过指针访问对象在内存中的位置</h3><h3 id="区别"><a href="#区别" class="headerlink" title="区别:"></a>区别:</h3><blockquote>
+<h3 id="一-基本概念"><a href="#一-基本概念" class="headerlink" title="一.基本概念"></a>一.基本概念</h3><h4 id="一-基本类型-Undefined-Null-Boolean-Number-String"><a href="#一-基本类型-Undefined-Null-Boolean-Number-String" class="headerlink" title="(一). 基本类型: Undefined/Null/Boolean/Number/String"></a>(一). 基本类型: Undefined/Null/Boolean/Number/String</h4><blockquote>
+<p>保存在栈中</p>
+</blockquote>
+<h4 id="二-引用类型-通过指针访问对象在内存中的位置"><a href="#二-引用类型-通过指针访问对象在内存中的位置" class="headerlink" title="(二). 引用类型: 通过指针访问对象在内存中的位置"></a>(二). 引用类型: 通过指针访问对象在内存中的位置</h4><blockquote>
+<p>为对象,保存在堆中</p>
+</blockquote>
+<h4 id="三-基本类型与引用类型的区别"><a href="#三-基本类型与引用类型的区别" class="headerlink" title="(三). 基本类型与引用类型的区别"></a>(三). 基本类型与引用类型的区别</h4><blockquote>
 <p>复制变量值</p>
 <ol>
-<li>基本类型: 基本类型复制后的两个变量完全独立,不相互影响</li>
-<li>引用类型: 两个指针指向同一块内存空间</li>
+<li>基本类型: 从一个变量向另一个变量复制基本类型的值,会创建值的副本</li>
+<li>引用类型: 复制的只是指针,两个指针指向同一块内存空间</li>
 </ol>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> num2 = num1;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="keyword">var</span> obj2 = obj1;</div><div class="line">obj1.name = <span class="string">"js"</span>;</div><div class="line">alert(obj2.name);  <span class="comment">// "js"</span></div></pre></td></tr></table></figure>
-<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-05-5643f9ad000173bc06060350.png" alt="5643f9ad000173bc06060350"></p>
+<h4 id="四-参数传递方式-只能按值传递"><a href="#四-参数传递方式-只能按值传递" class="headerlink" title="(四)参数传递方式: 只能按值传递"></a>(四)参数传递方式: 只能按值传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 新创建一个对象person, 通过setname,person的name属性被设置为"js",之后重写obj,此时的obj为局部变量,而这个局部变量在函数执行完后会立刻被销毁[即使在函数内部引用了参数的值,但原始的引用仍然保持不变]</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    obj.name = <span class="string">"js"</span>;</div><div class="line">    obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    obj.name = <span class="string">"oc"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person = newObject();</div><div class="line">setName(person);</div><div class="line">alert(person.name);  <span class="comment">// "js"</span></div></pre></td></tr></table></figure>
+<h4 id="五-typeof-amp-instanceof"><a href="#五-typeof-amp-instanceof" class="headerlink" title="(五). typeof &amp; instanceof"></a>(五). typeof &amp; instanceof</h4><blockquote>
+<p>确定值是哪种基本类型用typeof,确定一个值是哪种引用类型用instanceof</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> setName != <span class="string">'funciton'</span>)&#123;&#125;</div><div class="line"><span class="keyword">if</span> (person instance <span class="keyword">of</span> <span class="built_in">Object</span>(<span class="built_in">Array</span>/<span class="built_in">RegExp</span>))</div></pre></td></tr></table></figure>
+<h3 id="二-执行环境及作用域"><a href="#二-执行环境及作用域" class="headerlink" title="二.执行环境及作用域"></a>二.执行环境及作用域</h3><blockquote>
+<p>内部环境首先在自己的变量对象中查找变量和函数名,如果搜不到,会通过作用域链向上逐级查询</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">"blue"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> anotherColor = <span class="string">"red"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">swapColors</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> tempColor = anotherColor;</div><div class="line">    anotherColor = color;</div><div class="line">    color = tempColor;</div><div class="line">&#125;</div><div class="line">swapColors();</div><div class="line">&#125;</div><div class="line">changeColor();</div><div class="line">alert(color); <span class="comment">// red</span></div></pre></td></tr></table></figure>
+<h4 id="一-延长作用域链"><a href="#一-延长作用域链" class="headerlink" title="(一).延长作用域链"></a>(一).延长作用域链</h4><ul>
+<li>try-catch中的catch块</li>
+<li>with语句</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildUrl</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> qs = <span class="string">"?id=12"</span>;</div><div class="line"><span class="comment">// href = location.href</span></div><div class="line"><span class="keyword">with</span>(location) &#123;</div><div class="line"><span class="keyword">var</span> url = href + qs;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> url;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="三-垃圾回收"><a href="#三-垃圾回收" class="headerlink" title="三.垃圾回收"></a>三.垃圾回收</h3><blockquote>
+<p>解除值引用并不意味着自动回收该值所占用的内存</p>
+<ul>
+<li>标记清除:给当前不使用的值加上配房,然后再回收其内存<ol>
+<li>垃圾收集器给存储在内存中的所有变量都加上标记</li>
+<li>清除掉环境中的变量和被环境中的变量引用的变量的标记</li>
+<li>在此之后被加上标记的变量将被视为准备删除的变量</li>
+<li>进行内存清除</li>
+</ol>
+</li>
+<li>引用计数: 跟踪记录所有值被引用的次数</li>
+</ul>
+</blockquote>
 </section>
     
       <div class="tags">
