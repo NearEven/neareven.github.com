@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Even&#39;s blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://neareven.github.io/"/>
+  <updated>2017-07-06T07:29:51.000Z</updated>
+  <id>https://neareven.github.io/</id>
+  
+  <author>
+    <name>Even</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript高级程序设计:五.引用类型</title>
+    <link href="https://neareven.github.io/2017/07/06/07-js/"/>
+    <id>https://neareven.github.io/2017/07/06/07-js/</id>
+    <published>2017-07-06T03:00:00.000Z</published>
+    <updated>2017-07-06T07:29:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一-Array"><a href="#一-Array" class="headerlink" title="一. Array"></a>一. Array</h3><h4 id="1-检测数组"><a href="#1-检测数组" class="headerlink" title="1. 检测数组:"></a>1. 检测数组:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(value))</div><div class="line">    <span class="keyword">var</span> array = [<span class="string">"js"</span>,<span class="string">"node.js"</span>,<span class="string">"vue"</span>];</div><div class="line">array[<span class="number">99</span>] = <span class="string">"oc"</span>;</div><div class="line">alert(array.length); <span class="comment">// 100</span></div></pre></td></tr></table></figure>
+<h4 id="2-转换方法"><a href="#2-转换方法" class="headerlink" title="2. 转换方法"></a>2. 转换方法</h4><pre><code>*   toString():将数组中值的字符串的形式拼接成以逗号分隔的字符串.
+*   valueOf(): 原数组
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</div><div class="line">alert(colors.toString());  <span class="comment">// "red,blue,green" 字符串</span></div><div class="line">alert(colors.valueOf());    <span class="comment">// ["red","blue","green"] 数组</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123;</div><div class="line">       <span class="attr">toLocaleString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">"js"</span>;</div><div class="line">       &#125;,</div><div class="line">       <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">"oc"</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">var</span> person2 = &#123;</div><div class="line">       <span class="attr">toLocaleString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">"vue"</span>;</div><div class="line">       &#125;,</div><div class="line">       <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">"node"</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">var</span> people = [person1, person2];</div><div class="line">   alert(people); <span class="comment">// oc,node</span></div><div class="line">   alert(people.toString()); <span class="comment">// oc, node</span></div><div class="line">   alert(people.toLocaleString()); <span class="comment">// js, vue</span></div></pre></td></tr></table></figure>
+<h4 id="3-拼接-join"><a href="#3-拼接-join" class="headerlink" title="3. 拼接: join"></a>3. 拼接: join</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"green"</span>, <span class="string">"blue"</span>];</div><div class="line">alert(colors.join(<span class="string">"||"</span>)); <span class="comment">// red||green||blue</span></div></pre></td></tr></table></figure>
+<h4 id="4-栈方法-后进先出-push-pop"><a href="#4-栈方法-后进先出-push-pop" class="headerlink" title="4. 栈方法: 后进先出 push(), pop()"></a>4. 栈方法: 后进先出 push(), pop()</h4><pre><code>&gt; pop取得最后一项
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"js"</span>,<span class="string">"h5"</span>];</div><div class="line">colors.push(<span class="string">"css"</span>);</div><div class="line">alert(colors.length);   <span class="comment">// 3</span></div><div class="line"><span class="keyword">var</span> item = colors.pop();  <span class="comment">// item = "css";</span></div><div class="line">alert(colors.length);   <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<h4 id="5-队列方法-先进先出-shift-unshift"><a href="#5-队列方法-先进先出-shift-unshift" class="headerlink" title="5. 队列方法: 先进先出 : shift(), unshift()"></a>5. 队列方法: 先进先出 : shift(), unshift()</h4><pre><code>* shift(): 取得第一项
+* unshift(): 在数组前端添加任意个项并返回数组的长度
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"js"</span>,<span class="string">"h5"</span>];</div><div class="line">colors.push(<span class="string">"css"</span>);  </div><div class="line"><span class="keyword">var</span> item = colors.shift();  <span class="comment">// item = "js";</span></div><div class="line">alert(colors.length);   <span class="comment">// 2</span></div><div class="line">    </div><div class="line"><span class="keyword">var</span> count = colors.unshift(<span class="string">"oc"</span>,<span class="string">"node"</span>); <span class="comment">// count = 4, colors = ["oc", "node", "js","h5"]</span></div></pre></td></tr></table></figure>
+<h4 id="6-重排序方法"><a href="#6-重排序方法" class="headerlink" title="6. 重排序方法:"></a>6. 重排序方法:</h4><pre><code>* reverse():数组反转
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">values.reverse();   <span class="comment">// vlaues = [3,2,1];</span></div></pre></td></tr></table></figure>
+
+* sort(): 先调用toString(),然后比较得到的字符串[即使是全是数字,也依然会调用toString]
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> values = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>];</div><div class="line">values.sort();  <span class="comment">// values = [0,1,10,15,5];</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;!--<span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (value1 &lt; value2) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (value1 &gt; value2)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;--&gt;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1,value2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> value2-value1; <span class="comment">// 降序</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> values = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">15</span>,<span class="number">10</span>,<span class="number">5</span>];</div><div class="line">values.sort(compare);       <span class="comment">// values = [0,1,5,10,15]</span></div></pre></td></tr></table></figure>
+<h4 id="7-合并-conact"><a href="#7-合并-conact" class="headerlink" title="7. 合并: conact"></a>7. 合并: conact</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>];</div><div class="line"><span class="keyword">var</span> colorsConact = colors.concat(<span class="string">"yellow"</span>, [<span class="string">"brown"</span>,<span class="string">"gray"</span>]); <span class="comment">// colorsConact = ["red","blue","yellow","brown","gray"]</span></div></pre></td></tr></table></figure>
+<h4 id="8-截取-slice-start-int-end-int"><a href="#8-截取-slice-start-int-end-int" class="headerlink" title="8.  截取: .slice(start: int, end: int)"></a>8.  截取: .slice(start: int, end: int)</h4><blockquote>
+<p>end为结束位置</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"brown"</span>, <span class="string">"gray"</span>];</div><div class="line"><span class="keyword">var</span> colorsSlice = colors.slice(<span class="number">3</span>); <span class="comment">// colorsSlice = ["brown", "gray"]</span></div><div class="line">alert(colorsSlice);</div><div class="line">colorsSlice = colors.slice(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// colorsSlice = ["blue"]</span></div><div class="line">alert(colorsSlice);</div></pre></td></tr></table></figure>
+<h4 id="9-splice"><a href="#9-splice" class="headerlink" title="9. splice:"></a>9. splice:</h4><pre><code>* 删除: colors.splice(start: int, deleteCount: int)--&gt;返回删除的数组
+* 插入
+* 替换:返回被替换的数组
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>];</div><div class="line"><span class="comment">// 删除第一项</span></div><div class="line"><span class="keyword">var</span> removed = colors.splice(<span class="number">0</span>, <span class="number">1</span>); <span class="comment">// colors = ["green", "blue"]; removed = ["red"]</span></div><div class="line"></div><div class="line"><span class="comment">// 从位置1开始插入2项</span></div><div class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="string">"yellow"</span>,<span class="string">"orange"</span>);<span class="comment">// colors = ["green","yellow","orange","blue"]; removed为空数组</span></div><div class="line"></div><div class="line"><span class="comment">// 插入两项,删除第一项</span></div><div class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">1</span>, <span class="string">"red"</span>, <span class="string">"purple"</span>); <span class="comment">//removed = [</span></div><div class="line"><span class="string">"yellow"</span>], colors = [<span class="string">"green"</span>, <span class="string">"red"</span>, <span class="string">"purple"</span>, <span class="string">"orange"</span>, <span class="string">"blue"</span>];</div></pre></td></tr></table></figure>
+<h4 id="10-位置"><a href="#10-位置" class="headerlink" title="10. 位置"></a>10. 位置</h4><pre><code>&gt; 传入要查找的项和查找起点位置的索引,返回要查找的项在数组中的位置,如果没找到,返回-1
+* indexOf(searchString: string, position?: int):从数组的开头向后查找
+* lastIndexOf():从数组的末尾向前查找
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line">    alert(numbers.indexOf(<span class="number">4</span>)); <span class="comment">// 3</span></div><div class="line"></div><div class="line">    <span class="comment">// 位置越界</span></div><div class="line">    alert(numbers.indexOf(<span class="number">4</span>, <span class="number">4</span>)); <span class="comment">// 5</span></div><div class="line">    alert(numbers.lastIndexOf(<span class="number">4</span>, <span class="number">4</span>)); <span class="comment">// 3</span></div><div class="line"></div><div class="line">    alert(numbers.indexOf(<span class="number">0</span>));<span class="comment">// -1</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> person = &#123;<span class="attr">name</span>: <span class="string">"js"</span>&#125;;</div><div class="line">    <span class="keyword">var</span> people = [&#123;<span class="attr">name</span>: <span class="string">"js"</span>&#125;];</div><div class="line">    alert(people.indexOf(person));<span class="comment">//-1</span></div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line">#### 11. 迭代</div><div class="line">    * every():  返回boolvalue</div><div class="line">    * some():   返回boolvalue</div><div class="line">    * filter(): 返回满足条件的数组</div><div class="line">    * map():    与rac中map类似</div><div class="line">    * forEach(): 与oc中enumrated类似,遍历</div><div class="line"></div><div class="line">`<span class="string">``</span>js</div><div class="line">     <span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line">     <span class="keyword">var</span> every = numbers.every(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> item &gt; <span class="number">4</span>;</div><div class="line">     &#125;); <span class="comment">// every false</span></div><div class="line"></div><div class="line">     <span class="keyword">var</span> some = numbers.some(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">     	<span class="keyword">return</span> item &gt; <span class="number">4</span>;</div><div class="line">     &#125;); <span class="comment">// some true</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line"> <span class="keyword">var</span> filter = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</div><div class="line"> 	<span class="keyword">return</span> item &gt; <span class="number">4</span>;</div><div class="line"> &#125;); <span class="comment">// filter = ["5"]</span></div><div class="line"></div><div class="line"> <span class="keyword">var</span> map = numbers.map(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</div><div class="line"> 	<span class="keyword">return</span> item * <span class="number">2</span>;</div><div class="line"> &#125;); <span class="comment">// map = [2, 4, 6, 8, 10, 8, 6, 4, 2]</span></div><div class="line"></div><div class="line"> numbers.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</div><div class="line"></div><div class="line"> &#125;);<span class="comment">// 遍历,无返回值</span></div></pre></td></tr></table></figure>
+<h4 id="12-归并方法"><a href="#12-归并方法" class="headerlink" title="12. 归并方法"></a>12. 归并方法</h4><pre><code>* reduce: 从数组第一项开始向后遍历
+* reduceRight: 从数组的最后一项开始,向前遍历
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> sum = values.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev,cur,index,array</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> prev + cur;</div><div class="line">	<span class="comment">// 1 + 2</span></div><div class="line">	<span class="comment">// 3 + 3</span></div><div class="line">	<span class="comment">// 6 + 4</span></div><div class="line">	<span class="comment">// 10 + 5</span></div><div class="line">&#125;); <span class="comment">// 15</span></div></pre></td></tr></table></figure>
+<h3 id="二-Date"><a href="#二-Date" class="headerlink" title="二. Date"></a>二. Date</h3><h4 id="1-Date-parse"><a href="#1-Date-parse" class="headerlink" title="1. Date.parse()"></a>1. Date.parse()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(<span class="string">"6/13/2004"</span>));</div></pre></td></tr></table></figure>
+<h4 id="2-Date-UTC"><a href="#2-Date-UTC" class="headerlink" title="2. Date.UTC()"></a>2. Date.UTC()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2000</span>,<span class="number">0</span>))<span class="comment">// 2000年1月1日午夜0点</span></div><div class="line"><span class="keyword">var</span> now = <span class="built_in">Date</span>.now;</div></pre></td></tr></table></figure>
+<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-06-IMG_38921.jpg" alt="IMG_38921"></p>
+<h3 id="三-RegExp"><a href="#三-RegExp" class="headerlink" title="三. RegExp"></a>三. RegExp</h3><h3 id="四-Function"><a href="#四-Function" class="headerlink" title="四. Function"></a>四. Function</h3><h4 id="1-函数声明"><a href="#1-函数声明" class="headerlink" title="1. 函数声明"></a>1. 函数声明</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>));</div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123; <span class="comment">// sum在初始化中,执行错误</span></div><div class="line">     	<span class="keyword">return</span> num1 + num2;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>arguments.callee</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</div><div class="line"> 	<span class="keyword">if</span> (num &lt; <span class="number">1</span>) &#123;</div><div class="line"> 		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line"> 	&#125;<span class="keyword">else</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>);</div><div class="line"> 	&#125;</div><div class="line"> &#125;</div><div class="line"> factorial(<span class="number">3</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>caller</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> 	inner();</div><div class="line"> &#125;</div><div class="line"><span class="comment">// arguments.callee指向inner</span></div><div class="line"><span class="comment">// inner.caller指向outer</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> 	alert(<span class="built_in">arguments</span>.callee.caller);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> outer();</div></pre></td></tr></table></figure>
+</li>
+<li><p>call</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</div><div class="line"> <span class="keyword">var</span> o = &#123;<span class="attr">color</span>: <span class="string">"blue"</span>&#125;;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> 	alert(<span class="keyword">this</span>.color);</div><div class="line"> &#125;</div><div class="line"> sayColor(); <span class="comment">// "red"</span></div><div class="line"> sayColor.call(<span class="keyword">this</span>); <span class="comment">// "red"</span></div><div class="line"> sayColor.call(<span class="built_in">window</span>); <span class="comment">// "red"</span></div><div class="line"> sayColor.call(o); <span class="comment">// "blue"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;一-Array&quot;&gt;&lt;a href=&quot;#一-Array&quot; class=&quot;headerlink&quot; title=&quot;一. Array&quot;&gt;&lt;/a&gt;一. Array&lt;/h3&gt;&lt;h4 id=&quot;1-检测数组&quot;&gt;&lt;a href=&quot;#1-检测数组&quot; class=&quot;headerlink
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://neareven.github.io/tags/javascript/"/>
+    
+      <category term="javascript高级程序设计" scheme="https://neareven.github.io/tags/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript高级程序设计:四.类型.作用域.内存</title>
+    <link href="https://neareven.github.io/2017/07/06/06-js/"/>
+    <id>https://neareven.github.io/2017/07/06/06-js/</id>
+    <published>2017-07-06T02:00:00.000Z</published>
+    <updated>2017-07-06T02:52:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>  基本类型/引用类型<br>  执行环境(全局与局部)<br>  垃圾回收(arc)</p>
+</blockquote>
+<h3 id="一-基本概念"><a href="#一-基本概念" class="headerlink" title="一.基本概念"></a>一.基本概念</h3><h4 id="一-基本类型-Undefined-Null-Boolean-Number-String"><a href="#一-基本类型-Undefined-Null-Boolean-Number-String" class="headerlink" title="(一). 基本类型: Undefined/Null/Boolean/Number/String"></a>(一). 基本类型: Undefined/Null/Boolean/Number/String</h4><blockquote>
+<p>保存在栈中</p>
+</blockquote>
+<h4 id="二-引用类型-通过指针访问对象在内存中的位置"><a href="#二-引用类型-通过指针访问对象在内存中的位置" class="headerlink" title="(二). 引用类型: 通过指针访问对象在内存中的位置"></a>(二). 引用类型: 通过指针访问对象在内存中的位置</h4><blockquote>
+<p>为对象,保存在堆中</p>
+</blockquote>
+<h4 id="三-基本类型与引用类型的区别"><a href="#三-基本类型与引用类型的区别" class="headerlink" title="(三). 基本类型与引用类型的区别"></a>(三). 基本类型与引用类型的区别</h4><blockquote>
+<p>复制变量值</p>
+<ol>
+<li>基本类型: 从一个变量向另一个变量复制基本类型的值,会创建值的副本</li>
+<li>引用类型: 复制的只是指针,两个指针指向同一块内存空间</li>
+</ol>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> num2 = num1;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="keyword">var</span> obj2 = obj1;</div><div class="line">obj1.name = <span class="string">"js"</span>;</div><div class="line">alert(obj2.name);  <span class="comment">// "js"</span></div></pre></td></tr></table></figure>
+<h4 id="四-参数传递方式-只能按值传递"><a href="#四-参数传递方式-只能按值传递" class="headerlink" title="(四)参数传递方式: 只能按值传递"></a>(四)参数传递方式: 只能按值传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 新创建一个对象person, 通过setname,person的name属性被设置为"js",之后重写obj,此时的obj为局部变量,而这个局部变量在函数执行完后会立刻被销毁[即使在函数内部引用了参数的值,但原始的引用仍然保持不变]</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    obj.name = <span class="string">"js"</span>;</div><div class="line">    obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    obj.name = <span class="string">"oc"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person = newObject();</div><div class="line">setName(person);</div><div class="line">alert(person.name);  <span class="comment">// "js"</span></div></pre></td></tr></table></figure>
+<h4 id="五-typeof-amp-instanceof"><a href="#五-typeof-amp-instanceof" class="headerlink" title="(五). typeof &amp; instanceof"></a>(五). typeof &amp; instanceof</h4><blockquote>
+<p>确定值是哪种基本类型用typeof,确定一个值是哪种引用类型用instanceof</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// typeof比较时,全部加引号</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> setName != <span class="string">'funciton'</span>)&#123;&#125;</div><div class="line">    <span class="keyword">if</span> (person instance <span class="keyword">of</span> <span class="built_in">Object</span>(<span class="built_in">Array</span>/<span class="built_in">RegExp</span>))</div></pre></td></tr></table></figure>
+<h3 id="二-执行环境及作用域"><a href="#二-执行环境及作用域" class="headerlink" title="二.执行环境及作用域"></a>二.执行环境及作用域</h3><blockquote>
+<p>内部环境首先在自己的变量对象中查找变量和函数名,如果搜不到,会通过作用域链向上逐级查询</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">"blue"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> anotherColor = <span class="string">"red"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">swapColors</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> tempColor = anotherColor;</div><div class="line">    anotherColor = color;</div><div class="line">    color = tempColor;</div><div class="line">&#125;</div><div class="line">swapColors();</div><div class="line">&#125;</div><div class="line">changeColor();</div><div class="line">alert(color); <span class="comment">// red</span></div></pre></td></tr></table></figure>
+<h4 id="一-延长作用域链"><a href="#一-延长作用域链" class="headerlink" title="(一).延长作用域链"></a>(一).延长作用域链</h4><ul>
+<li>try-catch中的catch块</li>
+<li>with语句</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildUrl</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> qs = <span class="string">"?id=12"</span>;</div><div class="line"><span class="comment">// href = location.href</span></div><div class="line"><span class="keyword">with</span>(location) &#123;</div><div class="line"><span class="keyword">var</span> url = href + qs;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> url;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="三-垃圾回收"><a href="#三-垃圾回收" class="headerlink" title="三.垃圾回收"></a>三.垃圾回收</h3><blockquote>
+<p>解除值引用并不意味着自动回收该值所占用的内存</p>
+<ul>
+<li>标记清除:给当前不使用的值加上配房,然后再回收其内存<ol>
+<li>垃圾收集器给存储在内存中的所有变量都加上标记</li>
+<li>清除掉环境中的变量和被环境中的变量引用的变量的标记</li>
+<li>在此之后被加上标记的变量将被视为准备删除的变量</li>
+<li>进行内存清除</li>
+</ol>
+</li>
+<li>引用计数: 跟踪记录所有值被引用的次数</li>
+</ul>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  基本类型/引用类型&lt;br&gt;  执行环境(全局与局部)&lt;br&gt;  垃圾回收(arc)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一-基本概念&quot;&gt;&lt;a href=&quot;#一-基本概念&quot; class=&quot;headerlink&quot; title=&quot;一.
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://neareven.github.io/tags/javascript/"/>
+    
+      <category term="javascript高级程序设计" scheme="https://neareven.github.io/tags/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tangram pageView配置表</title>
+    <link href="https://neareven.github.io/2017/06/25/03-ios-tangram/"/>
+    <id>https://neareven.github.io/2017/06/25/03-ios-tangram/</id>
+    <published>2017-06-25T11:00:00.000Z</published>
+    <updated>2017-06-26T06:41:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>pageview视图配置</p>
+<p><img src="https://ooo.0o0.ooo/2017/06/23/594ce3aa6ff2c.png" alt="pageview视图配置"></p>
+<h2 id="pageHeight-pagWidth-设置pageview宽高度"><a href="#pageHeight-pagWidth-设置pageview宽高度" class="headerlink" title="pageHeight,pagWidth, 设置pageview宽高度"></a>pageHeight,pagWidth, 设置pageview宽高度</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="attr">"data"</span>: &#123;</div><div class="line">        <span class="attr">"cards"</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">"type"</span>: <span class="string">"10"</span>,</div><div class="line">                <span class="attr">"id"</span>: <span class="string">"first-line"</span>,</div><div class="line">                <span class="attr">"style"</span>:&#123;</div><div class="line">                  <span class="attr">"padding"</span>:[<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>],</div><div class="line">                  <span class="attr">"indicatorStyle"</span> : <span class="string">"dot"</span>,</div><div class="line">                  <span class="attr">"pageHeight"</span>:<span class="number">160</span>,</div><div class="line">                  <span class="attr">"bgColor"</span>: <span class="string">"#FFFFFF"</span>,</div><div class="line">                  <span class="attr">"indicatorRadius"</span>: <span class="string">"20"</span>,</div><div class="line">                  <span class="attr">"indicatorPosition"</span>:<span class="string">"inside"</span>,</div><div class="line">                  <span class="attr">"indicatorGravity"</span>: <span class="string">"left"</span>,</div><div class="line">                  <span class="attr">"indicatorHeight"</span>: <span class="string">"5"</span>,</div><div class="line">                  <span class="attr">"indicatorPosition"</span>: <span class="string">"outside"</span>,</div><div class="line">                  <span class="attr">"infinite"</span>: <span class="string">"true"</span>,</div><div class="line">                  <span class="attr">"autoScroll"</span> : <span class="string">"3000"</span>,</div><div class="line">                  <span class="attr">"indicatorMargin"</span>:<span class="string">"-10"</span>,</div><div class="line">                  <span class="attr">"defaultIndicatorColor"</span>: <span class="string">"#333333"</span>,</div><div class="line">                  <span class="attr">"indicatorColor"</span>: <span class="string">"#B4B4B4"</span>,</div><div class="line">                  <span class="attr">"hasIndicator"</span>:<span class="string">"true"</span></div><div class="line">                  &#125;,</div><div class="line">                <span class="attr">"items"</span>: [</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">"type"</span>: <span class="string">"2"</span>,</div><div class="line">                          <span class="attr">"imgUrl"</span>:<span class="string">"https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"</span></div><div class="line">                    &#125;,</div><div class="line">                          &#123;</div><div class="line">                          <span class="attr">"type"</span>:<span class="string">"2"</span>,</div><div class="line">                          <span class="attr">"imgUrl"</span>:<span class="string">"https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"</span></div><div class="line">                          &#125;,</div><div class="line">                          &#123;</div><div class="line">                          <span class="attr">"type"</span>:<span class="string">"2"</span>,</div><div class="line">                          <span class="attr">"imgUrl"</span>:<span class="string">"https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"</span></div><div class="line">                          &#125;,</div><div class="line">                          &#123;</div><div class="line">                          <span class="attr">"type"</span>:<span class="string">"1"</span>,</div><div class="line">                          <span class="attr">"imgUrl"</span>:<span class="string">"https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"</span></div><div class="line">                          &#125;,</div><div class="line">                          &#123;</div><div class="line">                          <span class="attr">"type"</span>:<span class="string">"1"</span>,</div><div class="line">                          <span class="attr">"imgUrl"</span>:<span class="string">"https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"</span></div><div class="line">                          &#125;</div><div class="line">                ]</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;pageview视图配置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/23/594ce3aa6ff2c.png&quot; alt=&quot;pageview视图配置&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;pageHeight-pagWidth-设置pag
+    
+    </summary>
+    
+    
+      <category term="ios" scheme="https://neareven.github.io/tags/ios/"/>
+    
+      <category term="tangram" scheme="https://neareven.github.io/tags/tangram/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初识阿里Tangram</title>
+    <link href="https://neareven.github.io/2017/06/23/02-ios-tangram/"/>
+    <id>https://neareven.github.io/2017/06/23/02-ios-tangram/</id>
+    <published>2017-06-23T07:00:00.000Z</published>
+    <updated>2017-06-23T08:55:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- EventBus:事件总线,提供组件/布局/tangramView之间的通信渠道
+Helper: 提供数据Model到ViewModel, ViewModel到View之间的转换
+Core: 提供复用回收机制
+Layout: 布局/组件摆放 -->
+<p>Tangram, 阿里开源动态搭建页面的组件,支持瀑布流/浮动/吸顶/轮播等多种布局方式,通过后台json配置,实现页面的动态更新.</p>
+<h1 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h1><p>tangram主要由页面/卡片/组件三部分组成.<br><img src="https://ooo.0o0.ooo/2017/06/23/594cd534b1db1.png" alt="tangram三大块"></p>
+<h2 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h2><p>通过<a href="https://github.com/alibaba/LazyScrollView" target="_blank" rel="external">LazyScrollView</a>实现,是页面容器,所有的卡片和组件都添加在页面中</p>
+<h2 id="卡片"><a href="#卡片" class="headerlink" title="卡片"></a>卡片</h2><p>卡片: 负责布局逻辑,对组件进行组合布局,只声明布局方式,不提供布局细节,由header/footer/body/style[样式:边距/间距/宽高比]组成.</p>
+<blockquote>
+<p>流式布局/瀑布流布局/吸顶式布局/悬浮布局/轮播布局<br>仅轮播卡片与通用流式卡片支持header/footer</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="string">"type"</span>:<span class="number">1</span>, </div><div class="line"><span class="comment">// "type":2 </span></div><div class="line"><span class="string">"style"</span>:&#123; --&gt; 描述样式</div><div class="line"></div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="string">"header"</span>:&#123;</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="string">"footer"</span>:&#123;</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="string">"items"</span>:[  ---&gt; 组件列表描述</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><blockquote>
+<p>包括类型/数据/样式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"type"</span> : <span class="string">"2"</span> --&gt;TangramSingleImageElement,图片类型</div><div class="line">	<span class="comment">// type=1为TangramSimpleTextElement,文字类型</span></div><div class="line"></div><div class="line">	<span class="string">"style"</span>:&#123;  --&gt;描述组件样式</div><div class="line">		<span class="string">"margin"</span>:[</div><div class="line">			<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span></div><div class="line">		],</div><div class="line">		<span class="string">"height"</span>: <span class="number">100</span>,</div><div class="line">		<span class="string">"width"</span>: <span class="number">100</span>,</div><div class="line">		<span class="string">"bgColor"</span>: <span class="string">"#ffffff"</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"imgurl"</span>: <span class="string">"../img.png"</span>,</div><div class="line">	<span class="string">"title"</span>: <span class="string">""</span>,</div><div class="line">	<span class="string">"action"</span>: <span class="string">""</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="各布局详细说明"><a href="#各布局详细说明" class="headerlink" title="各布局详细说明"></a>各布局详细说明</h1><p><a href="http://tangram.pingguohe.net/docs/layout-support/flow-layout" target="_blank" rel="external">流式布局:TangramFlowLayout</a></p>
+<p><a href="http://tangram.pingguohe.net/docs/layout-support/waterflow-layout" target="_blank" rel="external">瀑布流式布局:TangramWaterFlowLayout</a></p>
+<p><a href="http://tangram.pingguohe.net/docs/layout-support/oneplusn-layout" target="_blank" rel="external">一拖N布局:TangramSingleAndDoubleLayout</a></p>
+<p><a href="http://tangram.pingguohe.net/docs/layout-support/float-layout" target="_blank" rel="external">浮动布局:TangramDragableLayout</a></p>
+<p><a href="hhttp://tangram.pingguohe.net/docs/layout-support/sticky-layout" target="_blank" rel="external">吸顶/吸底布局:TangramStickyLayout</a></p>
+<p><a href="http://tangram.pingguohe.net/docs/layout-support/pagescroll-layout" target="_blank" rel="external">轮播布局:TangramPageScrollLayout</a></p>
+<p>以流式布局为例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"margin"</span>: [<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>] --&gt; 卡片外边距:上右下左</div><div class="line">	<span class="string">"padding"</span>: [<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>] --&gt; 卡片内间距:上右下左</div><div class="line">	<span class="string">"aspectRadio"</span>: <span class="string">"9"</span>  --&gt; 每一行的宽高比</div><div class="line">	<span class="string">"vGap"</span>: <span class="string">"9"</span>   		--&gt; 组件间的坚直间距</div><div class="line">	<span class="string">"hGap"</span>: <span class="string">"9"</span>			--&gt; 组件间的水平间距</div><div class="line">	<span class="string">"bgImgUrl"</span>: <span class="string">"../img.png"</span> --&gt;卡片背景图</div><div class="line">	<span class="string">"bgColor"</span>: <span class="string">"#ffffff"</span>	--&gt;卡片背景色</div><div class="line">	<span class="string">"cols"</span>:	[<span class="number">30</span>,<span class="number">30</span>] ??--&gt;每列的百分比，如果是N列，可以只写<span class="built_in">Array</span>中只写N<span class="number">-1</span>项，最后一项会自动填充，如果加一起大于<span class="number">100</span>，就按照填写的来算</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://tangram.pingguohe.net/docs/layout-support/inner-support" target="_blank" rel="external"></a></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/23/594ccd9375663.png" alt="流式布局style"><br><img src="https://ooo.0o0.ooo/2017/06/23/594ccdd3e0896.png" alt="流式布局style"><br><img src="https://ooo.0o0.ooo/2017/06/23/594ccdf8477f8.png" alt="流式布局style"></p>
+<h1 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h1><ol>
+<li>注册tangram组件:两种类型:文字与图片<blockquote>
+<p>TangramSingleImageElement: 图片类型<br>TangramSimpleTextElement: 文字类型</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[TangramDefaultItemModelFactory registElementType:@&quot;1&quot; className:@&quot;TangramSingleImageElement&quot;];</div><div class="line">	[TangramDefaultItemModelFactory registElementType:@&quot;2&quot; className:@&quot;TangramSimpleTextElement&quot;];</div></pre></td></tr></table></figure>
+<ol>
+<li>读取json数据,使用helper解析实例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	 <span class="comment">//获取数据</span></div><div class="line"> 	NSString *mockDataPath = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@<span class="string">"TangramMock"</span> ofType:@<span class="string">"json"</span>] encoding:NSUTF8StringEncoding error:nil];</div><div class="line"> 	NSDictionary *dict = [mockDataPath objectFromJSONString];</div><div class="line">	 self.layoutModelArray = [[dict objectForKey:@<span class="string">"data"</span>] objectForKey:@<span class="string">"cards"</span>];</div><div class="line"> 	<span class="comment">//使用helper解析成layout实例</span></div><div class="line">	 self.layoutArray = [TangramDefaultDataSourceHelper layoutsWithArray:self.layoutModelArray];	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://tangram.pingguohe.net/docs/layout-support/inner-support" target="_blank" rel="external">各种布局json type配置表</a>&gt;</p>
+<ol>
+<li>实现<code>TangramDataSource Delegate</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回layout个数:卡片个数</span></div><div class="line">- (NSUInteger)numberOfLayoutsInTangramView:(TangramView *)view</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> self.layoutModelArray.count;</div><div class="line">&#125;</div><div class="line"><span class="comment">//返回layout的实例:实例内容有哪些</span></div><div class="line">- (UIView&lt;TangramLayoutProtocol&gt; *)layoutInTangramView:(TangramView *)view atIndex:(NSUInteger)index</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> [self.layoutArray objectAtIndex:index];</div><div class="line">&#125;</div><div class="line"><span class="comment">//返回某一个layout中itemModel的个数:一个卡片中组件的个数</span></div><div class="line">- (NSUInteger)numberOfItemsInTangramView:(TangramView *)view forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> layout.itemModels.count;</div><div class="line">&#125;</div><div class="line"><span class="comment">//返回layout中指定index的itemModel实例</span></div><div class="line">- (NSObject&lt;TangramItemModelProtocol&gt; *)itemModelInTangramView:(TangramView *)view forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout atIndex:(NSUInteger)index</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> [layout.itemModels objectAtIndex:index];;</div><div class="line">&#125;</div><div class="line"><span class="comment">//根据Model生成View</span></div><div class="line"><span class="comment">//以上的方法在调用Tangram的reload方法后就会执行，而这个方法是按需加载</span></div><div class="line">- (UIView *)itemInTangramView:(TangramView *)view withModel:(NSObject&lt;TangramItemModelProtocol&gt; *)model forLayout:(UIView&lt;TangramLayoutProtocol&gt; *)layout atIndex:(NSUInteger)index</div><div class="line">&#123;</div><div class="line">    <span class="comment">//先尝试找可以复用的View，有的话就赋值，没有的话就生成一个</span></div><div class="line">    UIView *reuseableView = [view dequeueReusableItemWithIdentifier:model.reuseIdentifier];</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (reuseableView) &#123;</div><div class="line">        reuseableView =  [TangramDefaultDataSourceHelper refreshElement:reuseableView byModel:model];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        reuseableView =  [TangramDefaultDataSourceHelper elementByModel:model];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> reuseableView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>创建tangram实例</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	-(TangramView *)tangramView</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (nil == _tangramView) &#123;</div><div class="line">        _tangramView = [[TangramView alloc]init];</div><div class="line">        _tangramView.frame = self.view.bounds;</div><div class="line">        <span class="comment">//要设置datasouce delegate</span></div><div class="line">        [_tangramView setDataSource:self];</div><div class="line">        _tangramView.backgroundColor = [UIColor whiteColor];</div><div class="line">        [self.view addSubview:_tangramView];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _tangramView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>刷新视图</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.tangramView reloadData];</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/06/23/594cc6b32a9f6.png" alt="tangram执行流程"></p>
+<!-- 
+## TangramDragableLayout
+可拖动的item,
+<figure class="highlight plain"><figcaption><span>*fixLabyout = [[TangramDragableLayout alloc] init];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fixLabyout.alignType = TopRight;</div><div class="line">fixLabyout.offsetX = 0;</div><div class="line">fixLabyout.offsetY = 100;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">alignType: 设置位置类型</div><div class="line">typedef NS_ENUM(NSInteger, FixAlignType)</div><div class="line">&#123;</div><div class="line">    TopLeft = <span class="number">0</span>,		上左</div><div class="line">    TopRight,			上右</div><div class="line">    BottomLeft,			下左</div><div class="line">    BottomRight			下右</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="string">``</span><span class="string">` --&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&lt;!-- ##TangramViewDatasource</span></div></pre></td></tr></table></figure>
+<p>// 返回item的个数</p>
+<ul>
+<li>(NSUInteger)numberOfLayoutsInTangramView:(TangramView *)view;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>// item复用(与cell类似)</p>
+<ul>
+<li>(UIView <em>)itemInTangramView:(TangramView </em>)view withModel:(NSObject<TangramItemModelProtocol> <em>)model forLayout:(UIView<TangramLayoutProtocol> </em>)layout atIndex:(NSUInteger)index{<br>  DemoItem <em>item = (DemoItem </em>)[view dequeueReusableItemWithIdentifier:model.reuseIdentifier];<br>  if (!item) {<br>#warning 1: frame invalid<pre><code>item = [[DemoItem alloc] initWithFrame:CGRectMake(0, 0, 220, 20) reuseIdentifier:model.reuseIdentifier];
+</code></pre>  }</li>
+</ul>
+<pre><code>// 添加item的subview元素
+UILabel *testLabel = [item viewWithTag:1001];
+if (!testLabel) {
+    testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    testLabel.textColor = [UIColor redColor];
+    testLabel.backgroundColor = [UIColor whiteColor];
+    testLabel.tag = 1001;
+    [item addSubview:testLabel];
+}
+
+testLabel.text = [NSString stringWithFormat:@&quot;%ld&quot;,index];
+
+return item;  
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>// </p>
+<ul>
+<li>(NSUInteger)numberOfItemsInTangramView:(TangramView <em>)view forLayout:(UIView<TangramLayoutProtocol> </em>)layout;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>// fixModel要实现TangramItemModelProtocol协议</p>
+<ul>
+<li>(NSObject<TangramItemModelProtocol> <em>)itemModelInTangramView:(TangramView </em>)view forLayout:(UIView<TangramLayoutProtocol> <em>)layout atIndex:(NSUInteger)index{<br>  DemoFixModel </em>fixModel = [[DemoFixModel alloc] init];<br>  return fixModel;<br>}<br>``` –&gt;</li>
+</ul>
+-->]]></content>
+    
+    <summary type="html">
+    
+      &lt;!-- EventBus:事件总线,提供组件/布局/tangramView之间的通信渠道
+Helper: 提供数据Model到ViewModel, ViewModel到View之间的转换
+Core: 提供复用回收机制
+Layout: 布局/组件摆放 --&gt;
+&lt;p&gt;Tangram
+    
+    </summary>
+    
+    
+      <category term="ios" scheme="https://neareven.github.io/tags/ios/"/>
+    
+      <category term="tangram" scheme="https://neareven.github.io/tags/tangram/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html【元素一箩筐】</title>
+    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
+    <id>https://neareven.github.io/2017/06/21/01-html/</id>
+    <published>2017-06-21T11:00:00.000Z</published>
+    <updated>2017-07-05T11:22:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
+</li>
+<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
+</li>
+<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
+</li>
+<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
+</li>
+<li><p><code>ul:(unordered list)</code>: 无序列表</p>
+</li>
+<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
+</li>
+<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
+</li>
+<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
+</li>
+<li><p>字符缩写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>a</code>: 链接</p>
+</li>
+<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
+</li>
+<li><p><code>strong</code>: <strong>特别强调</strong></p>
+</li>
+<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
+</li>
+<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
+</li>
+<li><p>点击图片跳转到新的链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html--&gt;CSS</title>
+    <link href="https://neareven.github.io/2017/06/21/04-html/"/>
+    <id>https://neareven.github.io/2017/06/21/04-html/</id>
+    <published>2017-06-21T11:00:00.000Z</published>
+    <updated>2017-06-30T03:10:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 限定body样式 p &#123;&#125;, head &#123;&#125;, h1 &#123;&#125;, </div><div class="line">body &#123;</div><div class="line">	background-color: #ffffff;</div><div class="line">	margin-left: 20%;</div><div class="line">	margin-right: 20%;</div><div class="line">	border:2px dotted black; // 宽为2px的圆点黑色边框</div><div class="line">	padding: 10px ;   (10px 10px 10px 10px,内边距)</div><div class="line">	font-family: sans-serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><link rel="stylesheet" type="text/css" href="lounge.css"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">rel 指定了html文件与所链接的文件间的关系,这里链接到的是样式表,所以使用stylesheet </div><div class="line">``</div><div class="line"></div><div class="line">1. 	``li a&#123;&#125;`` : 右边的标签包含在左边的标签里</div><div class="line">2.	`` .用来选择class属性``, ``#用来选择id属性``,id 具有唯一性, class可以多个标签用同一个属性</div><div class="line">3.	``li a:hover:not(.active) &#123;&#125;`` : 当鼠标停在所有li标签里的a标签,但是a的class属性以不等于active的时候执行&#123;&#125;</div><div class="line"></div><div class="line">4. 类: </div><div class="line">```css</div><div class="line">	&lt;p class=&quot;greenTea&quot;&gt;  ... &lt;/p&gt;</div><div class="line"></div><div class="line">	p.greenTea &#123;</div><div class="line">		color: green;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 设置greenTea中的所有元素</div><div class="line">	.greenTea &#123;&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>一个元素加入多个类: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;p class = "greenTea blueBerry raspberry"&gt; ..&lt;/p&gt;</div><div class="line">如果多个类中定义了同样的属性,如何确定最终选用哪个类的属性?</div><div class="line">如果属性相同,后面列出的规则会胜出</div></pre></td></tr></table></figure>
+</li>
+<li><p>属性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">width: 设置内容区的宽度,不包括内边距,边框,外边距</div><div class="line">font-weight: 文本粗细--&gt;bold/normal</div><div class="line">left: 指定元素左边所在位置</div><div class="line">line-height: 设置文本元素中的行间距</div><div class="line">top: 元素顶部的位置</div><div class="line">text-align: 文本对齐[对块中的所有内联元素都设置对齐,如果直接在内联元素中使用(&lt;img&gt;)中,则无效]</div><div class="line">letter-spacing: 在字母间设置间距. [l i k e]</div><div class="line">font-style: 设置斜体文本--&gt;no italic/ italic</div><div class="line">list-style: 设置列表中列表项的外观</div><div class="line">border-style: 边框:实线/虚线/破折线--&gt;solid/dotted/dashed</div><div class="line">border-width: thin/medium/thick</div><div class="line">border-top-width:指定某一边边框</div><div class="line">border-top-left-radius:设定角度</div><div class="line">padding: 内边距[上右下左]</div><div class="line">background-image: 背景图片--&gt;url("images/cocktail.gif") repeat-x;</div><div class="line">text-decoration: 上划线/下划线/删除线--&gt;underline/overline/line-through</div><div class="line">background-position: top left right center bottom</div><div class="line">background-repeat: repeat/repeat-x(水平方向上重复)/repeat-y/inherit(按父元素的设置来处理)/no-repeat</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义自己的字体</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@font-face &#123;</div><div class="line">	font-family:"myfont",</div><div class="line">	src: url(http://...woff),</div><div class="line">		 url(http://...tff);</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1 &#123;</div><div class="line">	font-family: "myfont",sans-serif; /*  如果没有找到myfont字体,则调用sans-serif*/</div><div class="line">&#125;</div><div class="line"></div><div class="line">// @font-face为内置css规则,同样的还有</div><div class="line">@import: css中导入其他的css文件[与html中的&lt;link&gt;类似]</div><div class="line">@media: 创建特定的css, 如印刷页/桌面屏幕/手机</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置字体大小: 相对于父元素的大小[body默认像素为16px,</p><h4>与body相同]<p></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">150%,1<span class="selector-class">.5em</span></div><div class="line">子元素是父元素的1<span class="selector-class">.5</span>倍</div></pre></td></tr></table></figure>
+</h4></li>
+<li><p>装饰叠加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 1. 同时有上划线和下划线</div><div class="line">em &#123;</div><div class="line">	text-decoration: underline overline;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2. 只会有下划线</div><div class="line">em &#123;</div><div class="line">	text-decoration: underline;</div><div class="line">&#125;</div><div class="line">em &#123;</div><div class="line">	text-decoration: overline;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;del&gt;</code>: 待删除</p>
+</li>
+<li><p><code>&lt;ins&gt;</code>:   待加入</p>
+</li>
+<li><p>尾部:<br><img src="https://ooo.0o0.ooo/2017/06/28/59531fb731923.png" alt="尾部示例"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">small</span>&gt;</span></div><div class="line">       &amp;copy; 2012, Head First Lounge<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">       All trademarks and registered trademarks appearing on this site are </div><div class="line">       the property of their respective owners.</div><div class="line">     <span class="tag">&lt;/<span class="name">small</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"cd"</span>&gt;</span>Buddha Bar<span class="tag">&lt;/<span class="name">span</span>&gt;</span>, <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"artist"</span>&gt;</span>Claude Challe<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>符号代替</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&amp; : &amp;amp;</div><div class="line">© : &amp;copy;</div></pre></td></tr></table></figure>
+</li>
+<li><p>链接颜色</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 默认颜色</div><div class="line">a: link &#123;</div><div class="line">	color: black;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 访问过后的颜色</div><div class="line">a:visited &#123;</div><div class="line">	color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 鼠标悬停上时颜色</div><div class="line">a:hover &#123;</div><div class="line">	color: green;</div><div class="line">&#125;</div><div class="line"></div><div class="line">focus: tab焦点</div><div class="line">active:激活</div></pre></td></tr></table></figure>
+</li>
+<li><p>id &amp; class:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id通常用来指定唯一元素,如footer/header </div><div class="line">id用#来引用</div><div class="line">class用.来引用</div></pre></td></tr></table></figure>
+</li>
+<li><p>指定样式表的设备类型</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"cc.css rel="</span><span class="attr">stylesheet</span>" <span class="attr">media</span> =<span class="string">"screen and (max-device-width:480px)"</span>&gt;</span></div><div class="line">: 有屏幕而且屏幕宽度不超过480px</div><div class="line">media = "print": 打印机</div><div class="line"></div><div class="line">in-device-width/ [orientation:landscape/portrait]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@media screen and (min-device-width: 480px)&#123;</div><div class="line">	#guraantee&#123;</div><div class="line">		margin-right: 250px;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media screen and (max-device-width:479px) and (orientation:portrait)&#123;</div><div class="line">	#guraantee &#123;</div><div class="line">		margin-right: 30px;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media print&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>div 与 span</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div 针对块元素, span针对内联元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>伪类: html中没有相关代码,由浏览器来进行指定: 如 a:link ,a:visited</p>
+</li>
+<li><p>布局方式: 块元素自上而下, 内联元素自左而右</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 块元素计算空间会将重叠的外边距中最大的外边距来计算</div><div class="line">2. 而内联元素则会取二者之和,内联元素的外边距通常用于img</div><div class="line">3. 如果一个块元素嵌套在另一个块元素中,且都有外边距,如果外边的元素有边框,则不会折叠,否则,会折叠</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置布局方式:以浮动在右边为例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. 要让a块元素在b块元素后浮动,就要将a块元素的代码移到b块元素后</div><div class="line">2. 设置a的width,float</div><div class="line">3. 设置主内容栏的右边距= a的width+ a的内外边距*2</div><div class="line">注意: 通常浮动边栏,主显示内容随浏览器的宽度进行变动</div></pre></td></tr></table></figure>
+</li>
+<li><p>浮动元素的外边距不会折叠,因为浮动元素的外边距不会碰到正常流中的外边距</p>
+</li>
+<li><p>clear: 会使块元素下移,直到两边没有浮动元素挨着</p>
+</li>
+<li><p><strong>float</strong>: 块元素的浮动[left right]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">左松右紧</div><div class="line">右紧左松</div><div class="line">两种设计: 对边栏内容设置float right</div><div class="line">		 对主内容设置float left</div></pre></td></tr></table></figure>
+</li>
+<li><p>流体布局 vs 冻结布局</p>
+</li>
+<li><p><code>position</code>属性</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static: 默认状态</div><div class="line">absolute: 相对于当前页面的位置</div><div class="line">fixed: 相对于浏览器窗口的位置</div><div class="line">relative:元素正常地流入页面,只是在显示之前要进行偏移</div></pre></td></tr></table></figure>
+<ol>
+<li>创建table视图时,borderspacing与外边距不会折叠</li>
+<li><p>vertical-align: 垂直对齐: top/bottom/middle</p>
+</li>
+<li><p>插入视频</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">controls : 是否显示控制器</div><div class="line">autoplay: 是否自动播放</div><div class="line"> <span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">width</span>=<span class="string">"512"</span> <span class="attr">height</span>=<span class="string">"288"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/tweetsip.webom"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/tweetsip.mp4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/tweetsip.ogv"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">p</span>&gt;</span>dslfasaflakdaldf<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">video</span>&gt;</span></div></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CSS&quot;&gt;&lt;a href=&quot;#CSS&quot; class=&quot;headerlink&quot; title=&quot;CSS&quot;&gt;&lt;/a&gt;CSS&lt;/h2&gt;&lt;h3 id=&quot;一-简介&quot;&gt;&lt;a href=&quot;#一-简介&quot; class=&quot;headerlink&quot; title=&quot;一 简介&quot;&gt;&lt;/a&gt;一 简
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>茶者,南方嘉木也</title>
+    <link href="https://neareven.github.io/2017/06/20/05-book/"/>
+    <id>https://neareven.github.io/2017/06/20/05-book/</id>
+    <published>2017-06-20T04:00:00.000Z</published>
+    <updated>2017-06-28T01:46:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>南方有嘉木，不夜之侯，筑草为城，茶人三部曲。喜欢这样的书，写一个时代，几辈人的故事。家事国事儿女情长，抑或疯狂，抑或哀怨。始自太平天国，终于1997，近百年历史，满目疮痍。赵寄客，一代侠士，杭天醉，枉自风流，于国家，自有肝胆。但这些，也不过只是时代的一个注脚罢了。倒不如那些微小的事物，反而更充满血与肉。忘忧茶庄，曼生壶，天目盏，狮峰，普洱，合上书，口舌生津。”水里火里去得，热里冷里经得，没有这番功夫，哪里来的好茶”。<br>满纸荒唐言，一把辛酸泪，都云作者痴，谁解其中味。经十载，书方成。且抛去所有的故事，仅茶一字，便不枉下得此番功夫了。何况于饮茶之时，可以细细品茶之外的故事。杭家5代，也只有这两种性格，性子平缓，心灵细腻，而另一种，激情而狂热。两者泾渭分明，始终未曾现于一人身。吴家茶清伯，三代杭嘉和，至忘忧止。嘉平，寄草，布朗，得放，迎霜，这另一种性格，竟也颤颤巍巍熬过了那段岁月。<br>杭州，最繁华的地方，也是温柔女儿乡，大宋拱手相让之都。这样的地方，本不应有铮铮铁骨，只适合端上一杯茶，坐于西湖边，论家长里短。却仍挡不住这血性之人。<br>南方有嘉木，是为茶也。内清明，外方直，吾与尔皆藏，曼生壶者。斯壶当饮斯茶，终满口茶香。<br>小驻为佳，且吃了赵州茶去，日归可缓，试同歌陌上花来。时候不早了，且梦中吃茶去吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;南方有嘉木，不夜之侯，筑草为城，茶人三部曲。喜欢这样的书，写一个时代，几辈人的故事。家事国事儿女情长，抑或疯狂，抑或哀怨。始自太平天国，终于1997，近百年历史，满目疮痍。赵寄客，一代侠士，杭天醉，枉自风流，于国家，自有肝胆。但这些，也不过只是时代的一个注脚罢了。倒不如那些
+    
+    </summary>
+    
+    
+      <category term="拆书记" scheme="https://neareven.github.io/tags/%E6%8B%86%E4%B9%A6%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://neareven.github.io/2016/06/10/hello-world/"/>
+    <id>https://neareven.github.io/2016/06/10/hello-world/</id>
+    <published>2016-06-10T15:00:00.000Z</published>
+    <updated>2017-06-21T11:45:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+      <category term="Movies" scheme="https://neareven.github.io/tags/Movies/"/>
+    
+      <category term="Life" scheme="https://neareven.github.io/tags/Life/"/>
+    
+  </entry>
+  
+</feed>
