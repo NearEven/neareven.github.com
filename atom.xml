@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://neareven.github.io/"/>
-  <updated>2017-07-11T01:42:13.000Z</updated>
+  <updated>2017-07-11T01:43:15.000Z</updated>
   <id>https://neareven.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>javascript高级程序设计:六.对象</title>
-    <link href="https://neareven.github.io/2017/07/06/08-js/"/>
-    <id>https://neareven.github.io/2017/07/06/08-js/</id>
-    <published>2017-07-06T03:00:00.000Z</published>
-    <updated>2017-07-11T01:42:13.000Z</updated>
+    <link href="https://neareven.github.io/2017/07/09/08-js/"/>
+    <id>https://neareven.github.io/2017/07/09/08-js/</id>
+    <published>2017-07-09T01:00:00.000Z</published>
+    <updated>2017-07-11T01:43:15.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="一-对象属性"><a href="#一-对象属性" class="headerlink" title="一. 对象属性"></a>一. 对象属性</h3><ol>
 <li>数据属性</li>
