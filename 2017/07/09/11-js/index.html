@@ -145,7 +145,11 @@
       <canvas id="share-qrcode"></canvas>
       <p class="notice">扫描二维码，分享此文章</p>
     </div>
-    <div id="comments"></div>
+    <div id="disqus_thread">
+  // <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  // </div>
+    </div>
   </article>
 </main>
 
@@ -192,30 +196,41 @@
     });
 
     // gitment
-    var gitmentConfig = "undefined";
-    if (gitmentConfig != "undefined") {
-      var gitment = new Gitment({
-        owner: "undefined",
-        repo: "undefined",
-        oauth: {
-          client_id: "undefined",
-          client_secret: "undefined"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
+    // var gitmentConfig = "undefined";
+    // if (gitmentConfig != "undefined") {
+    //   var gitment = new Gitment({
+    //     owner: "undefined",
+    //     repo: "undefined",
+    //     oauth: {
+    //       client_id: "undefined",
+    //       client_secret: "undefined"
+    //     },
+    //     theme: {
+    //       render(state, instance) {
+    //         const container = document.createElement('div')
+    //         container.lang = "en-US"
+    //         container.className = 'gitment-container gitment-root-container'
+    //         container.appendChild(instance.renderHeader(state, instance))
+    //         container.appendChild(instance.renderEditor(state, instance))
+    //         container.appendChild(instance.renderComments(state, instance))
+    //         container.appendChild(instance.renderFooter(state, instance))
+    //         return container;
+    //       }
+    //     }
+    //   })
+    //   gitment.render(document.getElementById('comments'))
+    // }
+
+//  if (!index && post.comments && config.disqus_shortname){
+// <section id="comments">
+//   <div id="disqus_thread">
+//     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+//   </div>
+// </section>
+//  }
+
+
+
   })();
 </script>
 
