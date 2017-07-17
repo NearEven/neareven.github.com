@@ -201,38 +201,31 @@ div class = "money-like" >
         });
 
         // gitment  
-        var d = document, s = d.getElementById('comments');
-       s.src = 'https://neareven.disqus.com/embed.js';
-       s.setAttribute('data-timestamp', +new Date());
-       // (d.head || d.body).appendChild(s);
-
-
-
-        // var gitmentConfig = "undefined";
-        // if (gitmentConfig != "undefined") {
-        //     var gitment = new Gitment({
-        //         id: "春雪",
-        //         owner: "undefined",
-        //         repo: "undefined",
-        //         oauth: {
-        //             client_id: "undefined",
-        //             client_secret: "undefined"
-        //         },
-        //         theme: {
-        //             render(state, instance) {
-        //                 const container = document.createElement('div')
-        //                 container.lang = "en-US"
-        //                 container.className = 'gitment-container gitment-root-container'
-        //                 container.appendChild(instance.renderHeader(state, instance))
-        //                 container.appendChild(instance.renderEditor(state, instance))
-        //                 container.appendChild(instance.renderComments(state, instance))
-        //                 container.appendChild(instance.renderFooter(state, instance))
-        //                 return container;
-        //             }
-        //         }
-        //     })
-        //     gitment.render(document.getElementById('comments'))
-        // }
+        var gitmentConfig = "undefined";
+        if (gitmentConfig != "undefined") {
+            var gitment = new Gitment({
+                id: "春雪",
+                owner: "undefined",
+                repo: "undefined",
+                oauth: {
+                    client_id: "undefined",
+                    client_secret: "undefined"
+                },
+                theme: {
+                    render(state, instance) {
+                        const container = document.createElement('div')
+                        container.lang = "en-US"
+                        container.className = 'gitment-container gitment-root-container'
+                        container.appendChild(instance.renderHeader(state, instance))
+                        container.appendChild(instance.renderEditor(state, instance))
+                        container.appendChild(instance.renderComments(state, instance))
+                        container.appendChild(instance.renderFooter(state, instance))
+                        return container;
+                    }
+                }
+            })
+            gitment.render(document.getElementById('comments'))
+        }
 
     })(); <
 /script>
