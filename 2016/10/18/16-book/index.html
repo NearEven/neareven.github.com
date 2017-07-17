@@ -104,16 +104,20 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>不持有的生活</h2>
-  <p class="post-date">2016-10-18</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
-</div>
-<main class="app-body">
-  <article class="post-article">
-    <section class="markdown-content"><ol>
+    < div id = "article-banner" >
+    <
+    h2 > 不持有的生活 < /h2> <
+    p class = "post-date" > 2016-10-18 < /p> <
+    div class = "arrow-down" >
+    <
+    a href = "javascript:;" > < /a> <
+    /div> <
+    /div> <
+    main class = "app-body" >
+    <
+    article class = "post-article" >
+    <
+    section class = "markdown-content" > <ol>
 <li>超出自己的管理能力的物品,不持有</li>
 <li>不钟爱的物品,不持有</li>
 <li>无法回收利用或转送给他人的物品,不持有</li>
@@ -124,109 +128,99 @@
 <p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-14-ED3CC416-2FD2-4E06-A406-8A3602977266.png" alt="ED3CC416-2FD2-4E06-A406-8A3602977266"></p>
 <p>现在的一瞬确实存在,比你想象中的之后的某一时间更加现实.如果我们能将这一瞬,用我们双眼和双手来体味,从中找寻到无限乐趣.这一瞬就是我们最为充裕的时间.</p>
 <p>很轻松的一本小书。看书，可能并不是让自己读了后便如打凤凰血般激情满满，立刻着手去做。其实，很多书，看看便可，他并不是你一步一行所必要遵守的教科书，你只要能从中找到自己所喜欢的地方，这本书对你来说意义便达到了。不持有的生活，我看来，是简单生活，放慢脚步。当然，看作者的一个个生活小妙招，也会想到俺那乱乱的小窝，但也并不想回去整理，俺太懒了。保持日常的干净整洁已很难得，再让俺过更精致的生活，尚办不到。<br>其实，也没啥，努力过好你自己的生活。很是赞同作者所言，简单生活。其实这样的生活，很令人心动，不信且去阿勒泰走走，或去缘缘堂看看。<br>木心写的真好，从前的生活那么慢，车，马都慢，一生只够爱一个人。<br>那么多纯粹而又干净的生活或许很难寻得，但越是这样，我们不应该是更应该去慢慢的走，慢慢的行，慢慢的生活吗？</p>
-</section>
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
+ < /section>
+ <
+div class = "tags" >
+    <
+    span > Tags: < /span>
+
   <span class="tag-code">拆书记</span>
+ <
+/div>
+ <
+div class = "money-like" >
+    <
+    div class = "reward-btn" >
+    赏 <
+    span class = "money-code" >
+    <
+    span class = "alipay-code" >
+    <
+    div class = "code-image" > < /div> <
+    b > 使用支付宝打赏 < /b> <
+    /span> <
+    span class = "wechat-code" >
+    <
+    div class = "code-image" > < /div> <
+    b > 使用微信打赏 < /b> <
+    /span> <
+    /span> <
+    /div> <
+    p class = "notice" > 若你觉得我的文章对你有帮助， 欢迎点击上方按钮对我打赏 < /p> <
+    /div> <
+    div class = "qrcode" >
+    <
+    canvas id = "share-qrcode" > < /canvas> <
+    p class = "notice" > 扫描二维码， 分享此文章 < /p> <
+    /div> <
+    div id = "comments" > < /div> <
+    /article> <
+    /main>
 
-      </div>
-    
-    <div class="money-like">
-      <div class="reward-btn">
-        赏
-        <span class="money-code">
-          <span class="alipay-code">
-            <div class="code-image"></div>
-            <b>使用支付宝打赏</b>
-          </span>
-          <span class="wechat-code">
-            <div class="code-image"></div>
-            <b>使用微信打赏</b>
-          </span>
-        </span>
-      </div>
-      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-    </div>
-    <div class="qrcode">
-      <canvas id="share-qrcode"></canvas>
-      <p class="notice">扫描二维码，分享此文章</p>
-    </div>
-    <div id="comments"></div>
-  </article>
-</main>
+    <
+    script >
+    (function() {
+        var url = 'https://neareven.github.io/2016/10/18/16-book/';
+        $('#article-banner').geopattern(url)
+        $('.header').removeClass('fixed-header')
 
-<script>
-  (function () {
-    var url = 'https://neareven.github.io/2016/10/18/16-book/';
-    $('#article-banner').geopattern(url)
-    $('.header').removeClass('fixed-header')
+        // error image
+        $(".markdown-content img").on('error', function() {
+            $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+        })
 
-     // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
-    })
+        // zoom image
+        $(".markdown-content img").on('click', function() {
+            var src = $(this).attr('src')
+            var imageW = $(this).width()
+            var imageH = $(this).height()
 
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      var imageW = $(this).width()
-      var imageH = $(this).height()
-      
-      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-      zoom = zoom < 1 ? 1 : zoom
-      zoom = zoom > 2 ? 2 : zoom
-      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+            var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+            zoom = zoom < 1 ? 1 : zoom
+            zoom = zoom > 2 ? 2 : zoom
+            var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
-      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-      $('.image-view-wrap').addClass('wrap-active')
-      $('.image-view-wrap img').css({
-        'width': `${imageW}`,
-        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-      })
-      $('html').css('overflow', 'hidden')
+            $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src + '" /></div></div>')
+            $('.image-view-wrap').addClass('wrap-active')
+            $('.image-view-wrap img').css({
+                'width': `${imageW}`,
+                'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+            })
+            $('html').css('overflow', 'hidden')
 
-      $('.image-view-wrap').on('click', function() {
-        $(this).remove()
-        $('html').attr('style', '')
-      })
-    })
+            $('.image-view-wrap').on('click', function() {
+                $(this).remove()
+                $('html').attr('style', '')
+            })
+        })
 
-    // qrcode
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
+        // qrcode
+        var qr = new QRious({
+            element: document.getElementById('share-qrcode'),
+            value: document.location.href
+        });
 
-    // gitment
-    var gitmentConfig = "undefined";
-    if (gitmentConfig != "undefined") {
-      var gitment = new Gitment({
-        owner: "undefined",
-        repo: "undefined",
-        oauth: {
-          client_id: "undefined",
-          client_secret: "undefined"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
-  })();
-</script>
-
+        // gitment  var d = document, s = d.createElement('script');
+        s.src = 'https://neareven.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        var d = document,
+            s = d.createElement('script');
+        s.src = 'https://neareven.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })(); 
+    </script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
