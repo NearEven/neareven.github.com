@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Even&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  <title>
+    
+      ECMAScript 6入门 | Even&#39;s blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  <script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Even's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/atom.xml" class="item-link">RSS</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/atom.xml" class="menu-link">RSS</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>ECMAScript 6入门</h2>
+  <p class="post-date">2017-07-19</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="一-let"><a href="#一-let" class="headerlink" title="一. let"></a>一. let</h2><ul>
+<li>let 所声明的变量,只在let命令所在的代码块有效</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    &#123;</div><div class="line">	<span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">	<span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">//error, a isn't defined;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> arr = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>,<span class="string">'4'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(i); <span class="comment">// undefined</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">	a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(i); <span class="comment">// 10</span></div><div class="line">	&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a[<span class="number">6</span>](); </div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">	b[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(i); <span class="comment">//6</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">b[<span class="number">6</span>]();</div></pre></td></tr></table></figure>
+<ul>
+<li>在代码块内,let声明变量之前,该变量都不可用,称为<strong>暂时性死区</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> tmp = <span class="number">123</span>;</div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">	<span class="comment">// 虽然之前全局声明了一个tmp变量,只是此处的tmp被let绑定为块级作用域,所以在声明前对tmp赋值会报错</span></div><div class="line">	tmp = <span class="string">'abc'</span>; <span class="comment">// error </span></div><div class="line">	<span class="keyword">let</span> tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果区块中存在let与const命令,会自动形成封装作用域</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x=y,y=<span class="number">2</span></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> (x, y);</div><div class="line">&#125;</div><div class="line"><span class="comment">// x默认值等于y,而此时y还未声明,属于'死区'</span></div><div class="line">bar(); <span class="comment">// y is not defined</span></div></pre></td></tr></table></figure>
+<ul>
+<li>let 不允许重复声明(与oc类似)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> arg;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// error: arg has already been declared</span></div><div class="line">func(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">let</span> arg;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(func(<span class="number">1</span>));</div></pre></td></tr></table></figure>
+<ul>
+<li>块级作用域</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> n = <span class="number">5</span>;</div><div class="line">	<span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">		<span class="keyword">let</span> n = <span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">console</span>.log(n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 5</span></div><div class="line"><span class="comment">// 外层代码块不受内层代码块的影响</span></div><div class="line">f1();</div></pre></td></tr></table></figure>
+<h2 id="二-const"><a href="#二-const" class="headerlink" title="二. const"></a>二. const</h2><ul>
+<li>声明常量且声明后常量值不能改变</li>
+<li>只在声明所在的块级作用域内有效</li>
+<li>对const声明的常量赋新值不会报错</li>
+<li>const不存在提升,只能在声明之后使用</li>
+<li>不支持重复声明</li>
+<li>const指向指针,指针指向的对象本身可以改变,但是指针自身不可变</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(MAX); <span class="comment">// ReferenceError</span></div><div class="line">  <span class="keyword">const</span> MAX = <span class="number">5</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> a = [];</div><div class="line">a.push(<span class="string">'node'</span>); <span class="comment">// true</span></div><div class="line">a.length = <span class="number">0</span>; <span class="comment">// true</span></div><div class="line"><span class="comment">// a指向的数组可写,但如果更改指针指向的地址则错误</span></div><div class="line">a = [<span class="string">'dave'</span>]; <span class="comment">// error, assignment to constant variable</span></div></pre></td></tr></table></figure>
+<h3 id="三-解构赋值"><a href="#三-解构赋值" class="headerlink" title="三. 解构赋值"></a>三. 解构赋值</h3><ul>
+<li>数组解构按次序排列,对象解构由属性名决定</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fibs</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">		<span class="keyword">yield</span> a;</div><div class="line">		[a, b] = [b, a+b];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> [first, second,third,four] = fibs();</div><div class="line"><span class="built_in">console</span>.log([first,second,third,four]); <span class="comment">// [0, 1,1,2]</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> &#123;bar, foo&#125; = &#123;<span class="attr">foo</span>: <span class="string">'a'</span>, <span class="attr">bar</span>:<span class="string">'b'</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(&#123;bar,foo&#125;); <span class="comment">//&#123;bar:'b',foo:'a'&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> &#123;bzz&#125; = &#123;bar, foo&#125;;</div><div class="line"><span class="built_in">console</span>.log(bzz); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &#123;x&#125; = &#123;<span class="attr">x</span>:<span class="number">1</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(x, &#123;x&#125;); <span class="comment">// 1, &#123;x:1&#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x;</div><div class="line">&#123;x&#125; = &#123;<span class="attr">x</span>:<span class="number">1</span>&#125;; <span class="comment">// error, &#123;x&#125;会被解析为代码块</span></div><div class="line"><span class="comment">// (&#123;x&#125; = &#123;x:1&#125;) // true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>字符串赋值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [a,b,c,d,e,f] = <span class="string">'hello'</span>;</div><div class="line"><span class="built_in">console</span>.log(a,b,c,d,e,f)<span class="comment">//h e l l o undefined</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;<span class="attr">length</span>: len&#125; = <span class="string">'hello'</span>;</div><div class="line"><span class="built_in">console</span>.log(len, &#123;<span class="attr">length</span>:len&#125;) <span class="comment">// 5 &#123; length: 5 &#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span> (<span class="params">&#123;x=<span class="number">0</span>,y=<span class="number">1</span>&#125; = &#123;&#125;</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> [x,y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(move(&#123;<span class="attr">x</span>:<span class="number">3</span>,<span class="attr">y</span>:<span class="number">8</span>&#125;))</div><div class="line"><span class="built_in">console</span>.log(move()) <span class="comment">// [0,1]</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> jsonData = &#123;</div><div class="line">	<span class="attr">id</span>: <span class="number">42</span>,</div><div class="line">	<span class="attr">status</span>: <span class="string">'OK'</span>,</div><div class="line">	<span class="attr">data</span>: [<span class="number">867</span>,<span class="number">5309</span>]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;id, status, <span class="attr">data</span>:number&#125; = jsonData;</div><div class="line"><span class="built_in">console</span>.log(id,status,number);<span class="comment">// 42 'OK' [ 867, 5309 ]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>指定默认值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> link = <span class="function"><span class="keyword">function</span> (<span class="params">height, color, url</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> height = height || <span class="number">50</span>;</div><div class="line">    <span class="keyword">var</span> color = color || <span class="string">'red'</span>;</div><div class="line">    <span class="keyword">var</span> url = url || <span class="string">'http://azat.co'</span>;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> link = <span class="function"><span class="keyword">function</span>(<span class="params">height = <span class="number">50</span>, color = <span class="string">'red'</span>, url = <span class="string">'http://azat.co'</span></span>) </span>&#123;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>for…of 循环遍历</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">map.set(<span class="string">'first'</span>,<span class="string">'hello'</span>);</div><div class="line">map.set(<span class="string">'second'</span>,<span class="string">'world'</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key,value] <span class="keyword">of</span> map) &#123;</div><div class="line">	<span class="built_in">console</span>.log(key + <span class="string">" is "</span> + value); <span class="comment">// first is hello second is world</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [,value] <span class="keyword">of</span> map)&#123;</div><div class="line">	<span class="built_in">console</span>.log(value); <span class="comment">// hello   world</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>输入模块的指定方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; SourceMapConsumer, SourceNode &#125; = <span class="built_in">require</span>(<span class="string">"source-map"</span>);</div></pre></td></tr></table></figure>
+<h3 id="四-字符串-数值-数组-对象扩展"><a href="#四-字符串-数值-数组-对象扩展" class="headerlink" title="四. 字符串/数值/数组/对象扩展"></a>四. 字符串/数值/数组/对象扩展</h3><h4 id="1-字符串"><a href="#1-字符串" class="headerlink" title="1. 字符串:"></a>1. 字符串:</h4><ul>
+<li>字符串拼接: 用反引号 + ${string}</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">`Your name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>. `</span>;</div><div class="line"><span class="comment">// 'Your name is ' + first + ' ' + last + '.';</span></div></pre></td></tr></table></figure>
+<ul>
+<li>多行字符串</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> roadPoem = <span class="string">`Then took the other, as just as fair,</span></div><div class="line">    And having perhaps the better claim</div><div class="line">    Because it was grassy and wanted wear,</div><div class="line">    Though as for that the passing there</div><div class="line">    Had worn them really about the same,`;</div></pre></td></tr></table></figure>
+<ul>
+<li>标签模板</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tag</span> (<span class="params">s, v1, v2</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(s[<span class="number">0</span>],s[<span class="number">1</span>], v1,v2);</div><div class="line">	<span class="keyword">return</span> <span class="string">'ok'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">tag <span class="string">`Hello <span class="subst">$&#123; a + b&#125;</span> world <span class="subst">$&#123; a*b&#125;</span>`</span>; <span class="comment">// [ Hello   world  15 50</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> total = <span class="number">30</span>;</div><div class="line"><span class="keyword">var</span> msg = splice <span class="string">`the total is <span class="subst">$&#123;total&#125;</span> (<span class="subst">$&#123;total*<span class="number">1.05</span>&#125;</span> with tax)`</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">splice</span> (<span class="params">literals</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> result = <span class="string">''</span>;</div><div class="line">	<span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (i &lt; literals.length) &#123;</div><div class="line">		result += literals[i++];</div><div class="line">		<span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</div><div class="line">		<span class="comment">// &#123; '0': [ 'the total is ', ' (', ' with tax)' ],'1': 30, '2': 31.5 &#125;</span></div><div class="line">		<span class="keyword">if</span> (i &lt; <span class="built_in">arguments</span>.length) &#123;</div><div class="line">			result += <span class="built_in">arguments</span>[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 过滤html字符串</span></div><div class="line"><span class="keyword">var</span> message = safeHTML <span class="string">`&lt;p&gt;<span class="subst">$&#123;sender&#125;</span> has sent u a message.&lt;/p&gt;`</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">safeHTML</span>(<span class="params">templateData</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> s = templateData[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> arg = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="built_in">arguments</span>[i]);</div><div class="line"></div><div class="line">        s += arg.replace(<span class="regexp">/&amp;/g</span>, <span class="string">"&amp;amp;"</span>)</div><div class="line">            .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>)</div><div class="line">            .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>);</div><div class="line"></div><div class="line">        s += templateData[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2-数组"><a href="#2-数组" class="headerlink" title="2. 数组:"></a>2. 数组:</h4><ul>
+<li>Array.from</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>.from(&#123;<span class="number">0</span>:<span class="string">"a"</span>, <span class="number">1</span>:<span class="string">"b"</span>, <span class="number">2</span>:<span class="string">"c"</span>, <span class="attr">length</span>:<span class="number">3</span>&#125;)</div><div class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// ['a','b','c']</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</div><div class="line">	<span class="built_in">console</span>.log(args); <span class="comment">// [ 'a', 'b', 'c' ]</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// &#123; '0': 'a', '1': 'b', '2': 'c' &#125;</span></div><div class="line">&#125;</div><div class="line">foo(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr =  <span class="built_in">Array</span>.from([<span class="number">1</span>,,<span class="number">2</span>,,<span class="number">3</span>], (n)=&gt; n || <span class="number">0</span>);</div><div class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [ 1, 0, 2, 0, 3 ]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Array.of()</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayOf</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> [].slice.call(<span class="built_in">arguments</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>,<span class="number">11</span>,<span class="number">8</span>) <span class="comment">// [3,11,8]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>find: 找到第一个符合条件的数组成员</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> found = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>,<span class="number">10</span>].find(<span class="function">(<span class="params">n</span>) =&gt;</span> n &gt; <span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.log(found); <span class="comment">// 4</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>].find(<span class="function"><span class="keyword">function</span> (<span class="params">value,index,arr</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(value,index,arr); <span class="comment">// 1 0 [ 1, 3, 6 ]</span></div><div class="line">		<span class="keyword">return</span> value &gt; <span class="number">0</span>;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</div><div class="line">&#125;) <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>fill(column,startIndex, endIndex)[起始位置,结束位置]</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// </span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">// ['a', 7, 'c']</span></div></pre></td></tr></table></figure>
+<ul>
+<li>entries(), keys(), values()遍历</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(index);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> elem <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].values()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(elem);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 'a'</span></div><div class="line"><span class="comment">// 'b'</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, elem] <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(index, elem);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0 "a"</span></div><div class="line"><span class="comment">// 1 "b"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>includes(column, startIndex): 数组中是否包含某个值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法重写</span></div><div class="line"><span class="keyword">const</span> contains = <span class="function">(<span class="params">(</span>)=&gt;</span> <span class="built_in">Array</span>.prototype.includes </div><div class="line">	? <span class="function">(<span class="params">arr,value</span>) =&gt;</span> arr.includes(value): </div><div class="line"> <span class="function">(<span class="params">arr,value</span>) =&gt;</span> arr.some(<span class="function"><span class="params">el</span> =&gt;</span> el === value))();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(contains([<span class="string">'xiao'</span>,<span class="string">'na'</span>], <span class="string">'na'</span>));</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].includes(<span class="number">2</span>,<span class="number">0</span>)); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h4 id="3-对象"><a href="#3-对象" class="headerlink" title="3. 对象"></a>3. 对象</h4><ul>
+<li>Object.is(): 用来比较两个值是否严格相等<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>, <span class="string">'is'</span>, &#123;</div><div class="line">	<span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span> (x === y) &#123;</div><div class="line">			<span class="keyword">return</span> x !== <span class="number">0</span> || <span class="number">1</span> / x === <span class="number">1</span> / y;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> x !== x &amp;&amp; y !== y;</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">configurable</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">enumerable</span>: <span class="literal">false</span>,</div><div class="line">	<span class="attr">writable</span>: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&gt;<br><a href="http://www.alloyteam.com/2016/03/es6-front-end-developers-will-have-to-know-the-top-ten-properties/" target="_blank" rel="external">前端开发者不得不知的ES6十大特性</a></p>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <span class="tag-code">javascript</span>
+
+      </div>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+      <!-- UY END -->
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://neareven.github.io/2017/07/19/18-js/';
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "ECMAScript 6入门",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
