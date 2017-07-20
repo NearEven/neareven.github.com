@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://neareven.github.io/"/>
-  <updated>2017-07-20T07:32:29.000Z</updated>
+  <updated>2017-07-20T08:43:29.000Z</updated>
   <id>https://neareven.github.io/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node.js EventEmitter</title>
+    <link href="https://neareven.github.io/2017/07/20/27-node.js%20%E4%B8%8A%E4%BC%A0%E8%AF%84%E8%AE%BA/"/>
+    <id>https://neareven.github.io/2017/07/20/27-node.js 上传评论/</id>
+    <published>2017-07-20T04:57:00.000Z</published>
+    <updated>2017-07-20T08:43:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-20-15005394443873.jpg" alt=""></p>
+<p>Chrome浏览器中,打开<a href="https://juejin.im/post/59702bf36fb9a06bc23ac717?utm_source=gold_browser_extension" target="_blank" rel="external">掘金评论地址:</a>,右键-检查,选中Network<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-20-15005396956966.jpg" alt=""><br>此时当我们提交评论内容时,右边会多出<code>commnent</code>选项,点击comment,图示中的headrs与formData正是我们与服务器交互所需的内容<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-20-15005398308296.jpg" alt="comment"></p>
+<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-20-15005400073225.jpg" alt=""><br>从<code>General-RequestUrl</code>中获取我们所需的host与path路径,从<code>ResponseHeaders</code>中获取headers, 从<code>formData</code>中获取我们所要提交的内容</p>
+<blockquote>
+<p>注意事项: </p>
+<pre><code>1. http端口号:80  https端口号: 443
+2. headrs中Content-Length的长度应为我们所要上传的内容长度
+</code></pre></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> https = <span class="built_in">require</span>(<span class="string">'https'</span>)</div><div class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">'querystring'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> postData = querystring.stringify(&#123;</div><div class="line">    <span class="string">'respUser'</span>: <span class="string">'5948e562ac502e5490ee6064'</span>,</div><div class="line">    <span class="string">'targetId'</span>: <span class="string">'597045686fb9a06b9d5baaf4'</span>,</div><div class="line">    <span class="string">'targetType'</span>: <span class="string">'entry'</span>,</div><div class="line">    <span class="string">'content'</span>: <span class="string">'nodejs评论测试'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> options = &#123;</div><div class="line">    <span class="attr">hostname</span>: <span class="string">'comment-wrapper-ms.juejin.im'</span>,</div><div class="line">    <span class="attr">port</span>: <span class="number">443</span>, <span class="comment">// http 为80, https为443</span></div><div class="line">    path: <span class="string">'/v1/comment'</span>,</div><div class="line">    <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">    <span class="attr">headers</span>: &#123;</div><div class="line">        <span class="string">'Accept'</span>: <span class="string">'*/*'</span>,</div><div class="line">        <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate, br'</span>,</div><div class="line">        <span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8,en;q=0.6'</span>,</div><div class="line">        <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</div><div class="line">        <span class="string">'Content-Length'</span>: postData.length, <span class="comment">// 注意内容长度</span></div><div class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span>,</div><div class="line">        <span class="string">'Host'</span>: <span class="string">'comment-wrapper-ms.juejin.im'</span>,</div><div class="line">        <span class="string">'Origin'</span>: <span class="string">'https://juejin.im'</span>,</div><div class="line">        <span class="string">'Referer'</span>: <span class="string">'https://juejin.im/post/59702bf36fb9a06bc23ac717?utm_source=gold_browser_extension'</span>,</div><div class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'</span>,</div><div class="line">        <span class="string">'X-Juejin-Client'</span>: <span class="string">'1500439077259'</span>,</div><div class="line">        <span class="string">'X-Juejin-Src'</span>: <span class="string">'web'</span>,</div><div class="line">        <span class="string">'X-Juejin-Token'</span>: <span class="string">'eyJhY2Nlc3NfdG9rZW4iOiIwYnIyT0Rhb3R2YlBrMUExIiwicmVmcmVzaF90b2tlbiI6IjVmUGRrM25LNWs4Q0U1c20iLCJ0b2tlbl90eXBlIjoibWFjIiwiZXhwaXJlX2luIjo2MDQ4MDB9'</span>,</div><div class="line">        <span class="string">'X-Juejin-Uid'</span>: <span class="string">'596ee2256fb9a06ba5199d5a'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> req = https.request(options, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'status: '</span> + res.statusCode);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'headers: '</span> + <span class="built_in">JSON</span>.stringify(res.headers))</div><div class="line"></div><div class="line">    res.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">typeof</span> chunk)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    res.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'评论完毕'</span>)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    res.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'error: '</span> + error.message)</div><div class="line">    &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">req.write(postData)</div><div class="line">req.end()</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://orvnx1k8y.bkt.clouddn.com/2017-07-20-15005394443873.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Chrome浏览器中,打开&lt;a href=&quot;https://juejin.im/post/597
+    
+    </summary>
+    
+    
+      <category term="node.js" scheme="https://neareven.github.io/tags/node-js/"/>
+    
+  </entry>
   
   <entry>
     <title>node.js EventEmitter</title>
@@ -723,6 +753,70 @@ Layout: 布局/组件摆放 --&gt;
   </entry>
   
   <entry>
+    <title>html【元素一箩筐】</title>
+    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
+    <id>https://neareven.github.io/2017/06/21/01-html/</id>
+    <published>2017-06-21T11:00:00.000Z</published>
+    <updated>2017-07-05T11:22:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
+</li>
+<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
+</li>
+<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
+</li>
+<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
+</li>
+<li><p><code>ul:(unordered list)</code>: 无序列表</p>
+</li>
+<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
+</li>
+<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
+</li>
+<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
+</li>
+<li><p>字符缩写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>a</code>: 链接</p>
+</li>
+<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
+</li>
+<li><p><code>strong</code>: <strong>特别强调</strong></p>
+</li>
+<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
+</li>
+<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
+</li>
+<li><p>点击图片跳转到新的链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
     <title>html--&gt;CSS</title>
     <link href="https://neareven.github.io/2017/06/21/04-html/"/>
     <id>https://neareven.github.io/2017/06/21/04-html/</id>
@@ -807,70 +901,6 @@ Layout: 布局/组件摆放 --&gt;
     <summary type="html">
     
       &lt;h2 id=&quot;CSS&quot;&gt;&lt;a href=&quot;#CSS&quot; class=&quot;headerlink&quot; title=&quot;CSS&quot;&gt;&lt;/a&gt;CSS&lt;/h2&gt;&lt;h3 id=&quot;一-简介&quot;&gt;&lt;a href=&quot;#一-简介&quot; class=&quot;headerlink&quot; title=&quot;一 简介&quot;&gt;&lt;/a&gt;一 简
-    
-    </summary>
-    
-    
-      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html【元素一箩筐】</title>
-    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
-    <id>https://neareven.github.io/2017/06/21/01-html/</id>
-    <published>2017-06-21T11:00:00.000Z</published>
-    <updated>2017-07-05T11:22:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
-</li>
-<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
-</li>
-<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
-</li>
-<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
-</li>
-<li><p><code>ul:(unordered list)</code>: 无序列表</p>
-</li>
-<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
-</li>
-<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
-</li>
-<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
-</li>
-<li><p>字符缩写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>a</code>: 链接</p>
-</li>
-<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
-</li>
-<li><p><code>strong</code>: <strong>特别强调</strong></p>
-</li>
-<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
-</li>
-<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
-</li>
-<li><p>点击图片跳转到新的链接</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
     
     </summary>
     
@@ -982,41 +1012,6 @@ Layout: 布局/组件摆放 --&gt;
     <summary type="html">
     
       &lt;p&gt;书名&amp;lt;情人&amp;gt;,必涉及爱情.&lt;br&gt;第一次听说这本书,源自-段话.”那时候,你还很年轻,人人都说你美.现在,我是特意来告诉你,对我来说,我觉得现在你比年轻的时候更美.与你那时的面貌相比,我更爱你现在备受摧残的面容.”&lt;br&gt;本以为这是一本关于爱情的小说,在日暮时分
-    
-    </summary>
-    
-    
-      <category term="拆书记" scheme="https://neareven.github.io/tags/%E6%8B%86%E4%B9%A6%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不持有的生活</title>
-    <link href="https://neareven.github.io/2016/10/18/16-book/"/>
-    <id>https://neareven.github.io/2016/10/18/16-book/</id>
-    <published>2016-10-18T14:00:00.000Z</published>
-    <updated>2017-07-14T04:58:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>超出自己的管理能力的物品,不持有</li>
-<li>不钟爱的物品,不持有</li>
-<li>无法回收利用或转送给他人的物品,不持有</li>
-<li>不适合自己.与自己的生活方式不相符的物品,不持有<br>不持有的真正含义,就是最大限度地利用物品的价值,使之物尽其用.<br>不拥有不必要的东西<br>执念:不持有的生活与标准的生活/节俭的生活</li>
-</ol>
-<p>不持有的生活,并不是反对人们持有东西,不让人们持有东西的观点本身也不是不现实的.不持有的生活也不是让人们放弃使用便捷的东西,只是让人们把”的确很方便,但对我来说没用”的东西, 逐一拿来重新审视,争取能够做到”没用的东西不处理掉/用不到的东西再好也不买”.如此一来,生活将变得简单而纯粹,即使有些事情需要花点工夫,也能够以一种积极乐观的心态去面对.</p>
-<p>让生活慢一点<br>从前的生活那么慢,车马都慢,一辈子只够爱一个人<br>不持有的生活,不是要限制人的欲望/枯燥无味地生活.而是要以饱满的热情快乐地度过每一天,心情愉快地与这些少量的东西进行交流<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-14-C9ED6B76-D629-4D28-B842-0188062A283B.png" alt="C9ED6B76-D629-4D28-B842-0188062A283B"></p>
-<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-14-ED3CC416-2FD2-4E06-A406-8A3602977266.png" alt="ED3CC416-2FD2-4E06-A406-8A3602977266"></p>
-<p>现在的一瞬确实存在,比你想象中的之后的某一时间更加现实.如果我们能将这一瞬,用我们双眼和双手来体味,从中找寻到无限乐趣.这一瞬就是我们最为充裕的时间.</p>
-<p>很轻松的一本小书。看书，可能并不是让自己读了后便如打凤凰血般激情满满，立刻着手去做。其实，很多书，看看便可，他并不是你一步一行所必要遵守的教科书，你只要能从中找到自己所喜欢的地方，这本书对你来说意义便达到了。不持有的生活，我看来，是简单生活，放慢脚步。当然，看作者的一个个生活小妙招，也会想到俺那乱乱的小窝，但也并不想回去整理，俺太懒了。保持日常的干净整洁已很难得，再让俺过更精致的生活，尚办不到。<br>其实，也没啥，努力过好你自己的生活。很是赞同作者所言，简单生活。其实这样的生活，很令人心动，不信且去阿勒泰走走，或去缘缘堂看看。<br>木心写的真好，从前的生活那么慢，车，马都慢，一生只够爱一个人。<br>那么多纯粹而又干净的生活或许很难寻得，但越是这样，我们不应该是更应该去慢慢的走，慢慢的行，慢慢的生活吗？</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;超出自己的管理能力的物品,不持有&lt;/li&gt;
-&lt;li&gt;不钟爱的物品,不持有&lt;/li&gt;
-&lt;li&gt;无法回收利用或转送给他人的物品,不持有&lt;/li&gt;
-&lt;li&gt;不适合自己.与自己的生活方式不相符的物品,不持有&lt;br&gt;不持有的真正含义,就是最大限度地利用物品的价值,使之物尽
     
     </summary>
     
