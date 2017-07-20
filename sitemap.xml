@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://neareven.github.io/2017/07/20/26-node.js/</loc>
+    
+    <lastmod>2017-07-20T07:32:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://neareven.github.io/2015/07/20/25-thing/</loc>
     
     <lastmod>2017-07-20T05:03:13.000Z</lastmod>
@@ -142,7 +149,7 @@
   </url>
   
   <url>
-    <loc>https://neareven.github.io/about/index.html</loc>
+    <loc>https://neareven.github.io/tags/index.html</loc>
     
     <lastmod>2017-07-05T11:33:27.000Z</lastmod>
     
@@ -156,7 +163,7 @@
   </url>
   
   <url>
-    <loc>https://neareven.github.io/tags/index.html</loc>
+    <loc>https://neareven.github.io/about/index.html</loc>
     
     <lastmod>2017-07-05T11:33:27.000Z</lastmod>
     

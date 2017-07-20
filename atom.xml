@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://neareven.github.io/"/>
-  <updated>2017-07-19T06:13:33.000Z</updated>
+  <updated>2017-07-20T07:32:29.000Z</updated>
   <id>https://neareven.github.io/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node.js EventEmitter</title>
+    <link href="https://neareven.github.io/2017/07/20/26-node.js/"/>
+    <id>https://neareven.github.io/2017/07/20/26-node.js/</id>
+    <published>2017-07-20T04:57:00.000Z</published>
+    <updated>2017-07-20T07:32:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter</div><div class="line"><span class="keyword">var</span> life = <span class="keyword">new</span> EventEmitter()</div></pre></td></tr></table></figure>
+<h3 id="1-addEventListener"><a href="#1-addEventListener" class="headerlink" title="1. addEventListener"></a>1. addEventListener</h3><ul>
+<li>maxListeners: 默认添加10件</li>
+<li>设置最大监听事件: life.setMaxListeners(11)</li>
+</ul>
+<h3 id="2-设置监听事件"><a href="#2-设置监听事件" class="headerlink" title="2. 设置监听事件"></a>2. 设置监听事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setListener</span> (<span class="params">thing</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`给 listener添加监听 <span class="subst">$&#123;thing&#125;</span>`</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">life.on(<span class="string">'listener'</span>, setListener)</div><div class="line"></div><div class="line">life.on(<span class="string">'listener'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">repeat</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`重复监听 <span class="subst">$&#123;repeat&#125;</span>`</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">life.on(<span class="string">'listener'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">multi</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'设置多个事件'</span> + multi)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">life.on(<span class="string">'listener1'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">who</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'添加另外一个监听事件'</span> + who)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="3-添加监听"><a href="#3-添加监听" class="headerlink" title="3. 添加监听"></a>3. 添加监听</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">life.emit(<span class="string">'listener'</span>,<span class="string">'success'</span>)</div><div class="line">life.emit(<span class="string">'listener1'</span>, <span class="string">'success'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 给 listener添加监听 success</span></div><div class="line"><span class="comment">// 重复监听 success</span></div><div class="line"><span class="comment">// 设置多个事件success</span></div></pre></td></tr></table></figure>
+<h3 id="4-判断监听事件数量"><a href="#4-判断监听事件数量" class="headerlink" title="4. 判断监听事件数量"></a>4. 判断监听事件数量</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(life.listeners(<span class="string">'listener'</span>).length) <span class="comment">// 3</span></div><div class="line"><span class="built_in">console</span>.log(EventEmitter.listenerCount(life,<span class="string">'listener'</span>)) <span class="comment">//3</span></div></pre></td></tr></table></figure>
+<h3 id="5-判断是否添加监听"><a href="#5-判断是否添加监听" class="headerlink" title="5. 判断是否添加监听"></a>5. 判断是否添加监听</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> boolListener = life.emit(<span class="string">'hi'</span>, <span class="string">'success'</span>) </div><div class="line"><span class="built_in">console</span>.log(boolListener)  <span class="comment">// false, 没有被监听</span></div></pre></td></tr></table></figure>
+<h3 id="6-删除监听-在emit之前将on-事件删除-且函数要显式声明"><a href="#6-删除监听-在emit之前将on-事件删除-且函数要显式声明" class="headerlink" title="6. 删除监听[在emit之前将on 事件删除,且函数要显式声明]"></a>6. 删除监听[在emit之前将on 事件删除,且函数要显式声明]</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">life.removeListener(<span class="string">'listener'</span>, setListener);</div><div class="line">life.removeAllListeners(<span class="string">'listener'</span>, setListener)</div><div class="line"><span class="built_in">console</span>.log(EventEmitter.listenerCount(<span class="string">'listener'</span>))</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code
+    
+    </summary>
+    
+    
+      <category term="node.js" scheme="https://neareven.github.io/tags/node-js/"/>
+    
+  </entry>
   
   <entry>
     <title>ECMAScript 6入门</title>
@@ -992,43 +1022,6 @@ Layout: 布局/组件摆放 --&gt;
     
     
       <category term="拆书记" scheme="https://neareven.github.io/tags/%E6%8B%86%E4%B9%A6%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2015--在路上</title>
-    <link href="https://neareven.github.io/2015/12/28/22-thing/"/>
-    <id>https://neareven.github.io/2015/12/28/22-thing/</id>
-    <published>2015-12-28T14:03:00.000Z</published>
-    <updated>2017-07-20T04:57:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>年关将至，回首匆匆岁月，去年今日的情景还历历在目。</p>
-<p>2015，一个没有计划和许诺的一年，有过曲折，也有收获，一步一个脚印的走到了结尾。每年伊始，或多或少都会对新的一年充满遐想，跃跃欲试，打算用一年的时间，做一个全新而又充满斗志的自己。</p>
-<p>开始的四个月，并不太顺利，有失落，也曾想过放弃，困恼种种，但最终走到了五月。</p>
-<p>五月芒种，收获的季节，人们在辛劳数月后，满怀欣喜的进入了丰收的时刻，而我也在这仲满希望的五月，找到了新的工作，踏上全新的征程。事情总在冥冥之中按照它既定的路线出发，尽管我们还未找到他行走的轨迹，但最终走向了同一个终点。</p>
-<p>2015，遇到了一些人，读了一些书，骑行了一段路。</p>
-<p>遇到了一些人：</p>
-<p>David&amp;Marco,亦师亦友，自己的新同事，自己IOS开发的领路人，感谢幸运的遇到你们而不是匆匆擦肩而过。<br>David,2015,也许是你另外一个附加的本命年，事事不顺，各种打击纷至沓来，但最终挺过了这一年。希望在下一年，万事安好，无论何时何地，也要告诉自己，要独立，要坚强，要勇敢，要经得住挫折，要活得漂亮，要永远善良。</p>
-<p>总说吃一堑长一智，但很多事并不一定要经历后才有所得。感谢Marco，优秀的代码书写规范，清晰明了的代码逻辑，以及给自己讲过的的代码思想，获益良多。佩服你通宵到凌晨3点只为弄明白一个技术问题，也佩服你博客长更不断。。。</p>
-<p>读了一些书：</p>
-<p>在困窘的时刻，酷爱村上春树的小说，在孤独的城市中坚强的生活。闲暇的时刻，徜徉在李娟的阿勒泰，怀想丰子恺的孩童时代和笔下趣闻，伴着玛雅在岛上书店慢慢长大，也曾痴醉于消失的地平线上那一段传说。懈怠的时刻，坐着海斯勒的车顺着长城走到河北最终落脚在浙江小城，扒着火车伴着耍猴人们离开河南闯荡在大江南北。冲动的时刻，也曾想在金阁寺燃起一把大火，在生命册上留下一个脚注，为异乡人辩上一场。</p>
-<p>骑行了一段路：</p>
-<p>怀念大学时光，怀念那些蹬着租来的自行车一起远行的岁月。而今，又重拾当年的冲动与想象。</p>
-<p>躺在洒满阳光的草地上，望着碧蓝如洗的天空，感谢现在所拥有的一切。我爱静静地码代码的生活，也爱落日余晖下疯狂骑行在路上的生活。何为自我？不是你拥有了什么，而是在你失去所有后所能剩下的。当我一贫如洗时，我又拥有什么呢？有音乐可听，有清风可吹，有美景可赏，有杂书可读。也许，这才是我所想要的。或许少了几分斗志，但我感激现在的生活，感谢遇到的这些人，那些事。</p>
-<p>“任何认识任何行动都无法代替扬帆起航的喜悦”，借用三岛由纪夫的一句话。2016，下一个起航点，我是哈罗德，在无计划的路上，只管前行</p>
-<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-07-20-15005266194378.jpg" alt="苏州湖畔"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;年关将至，回首匆匆岁月，去年今日的情景还历历在目。&lt;/p&gt;
-&lt;p&gt;2015，一个没有计划和许诺的一年，有过曲折，也有收获，一步一个脚印的走到了结尾。每年伊始，或多或少都会对新的一年充满遐想，跃跃欲试，打算用一年的时间，做一个全新而又充满斗志的自己。&lt;/p&gt;
-&lt;p&gt;开始的四个
-    
-    </summary>
-    
-    
-      <category term="碎碎念" scheme="https://neareven.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   
