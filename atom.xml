@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://neareven.github.io/"/>
-  <updated>2017-07-21T03:34:38.000Z</updated>
+  <updated>2017-07-21T03:37:24.000Z</updated>
   <id>https://neareven.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="https://neareven.github.io/2017/07/21/28-node.js/"/>
     <id>https://neareven.github.io/2017/07/21/28-node.js/</id>
     <published>2017-07-21T04:40:00.000Z</published>
-    <updated>2017-07-21T03:34:38.000Z</updated>
+    <updated>2017-07-21T03:37:24.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="一-Buffer数据流的写入与读取"><a href="#一-Buffer数据流的写入与读取" class="headerlink" title="一. Buffer数据流的写入与读取"></a>一. Buffer数据流的写入与读取</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 读取文件</span></div><div class="line">fs.readFile(<span class="string">'logo.png'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, origin_buffer</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(Buffer.isBuffer(origin_buffer))</div><div class="line"></div><div class="line"><span class="comment">// 将读取的数据流写入png中</span></div><div class="line">	fs.writeFile(<span class="string">'logo_buffer.png'</span>, origin_buffer, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span> (err) &#123;</div><div class="line">			<span class="built_in">console</span>.log(err)</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	<span class="comment">// 数据流转换为64位字符串</span></div><div class="line">	<span class="keyword">var</span> base64Image = origin_buffer.toString(<span class="string">'base64'</span>)</div><div class="line">	<span class="built_in">console</span>.log(base64Image)</div><div class="line"></div><div class="line">	<span class="keyword">var</span> decodedImage = <span class="keyword">new</span> Buffer(base64Image, <span class="string">'base64'</span>)</div><div class="line">	<span class="built_in">console</span>.log(Buffer.compare(origin_buffer, decodedImage))</div><div class="line">	fs.writeFile(<span class="string">'logo_decodedImage.png'</span>, decodedImage, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(err)</div><div class="line">	&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<p>明日将与女友一起去连云之港,颇为期待ing..</p>
+<h2 id="一-Buffer数据流的写入与读取"><a href="#一-Buffer数据流的写入与读取" class="headerlink" title="一. Buffer数据流的写入与读取"></a>一. Buffer数据流的写入与读取</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 读取文件</span></div><div class="line">fs.readFile(<span class="string">'logo.png'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, origin_buffer</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(Buffer.isBuffer(origin_buffer))</div><div class="line"></div><div class="line"><span class="comment">// 将读取的数据流写入png中</span></div><div class="line">	fs.writeFile(<span class="string">'logo_buffer.png'</span>, origin_buffer, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span> (err) &#123;</div><div class="line">			<span class="built_in">console</span>.log(err)</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	<span class="comment">// 数据流转换为64位字符串</span></div><div class="line">	<span class="keyword">var</span> base64Image = origin_buffer.toString(<span class="string">'base64'</span>)</div><div class="line">	<span class="built_in">console</span>.log(base64Image)</div><div class="line"></div><div class="line">	<span class="keyword">var</span> decodedImage = <span class="keyword">new</span> Buffer(base64Image, <span class="string">'base64'</span>)</div><div class="line">	<span class="built_in">console</span>.log(Buffer.compare(origin_buffer, decodedImage))</div><div class="line">	fs.writeFile(<span class="string">'logo_decodedImage.png'</span>, decodedImage, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(err)</div><div class="line">	&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h2 id="二-Stream"><a href="#二-Stream" class="headerlink" title="二. Stream"></a>二. Stream</h2><h3 id="1-读取写入操作"><a href="#1-读取写入操作" class="headerlink" title="1. 读取写入操作"></a>1. 读取写入操作</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> source = fs.readFileSync(<span class="string">'./logo.png'</span>);</div><div class="line"></div><div class="line">fs.writeFileSync(<span class="string">'stream_logo.png'</span>, source);</div></pre></td></tr></table></figure>
 <h3 id="2-监听读取写入时机"><a href="#2-监听读取写入时机" class="headerlink" title="2. 监听读取写入时机"></a>2. 监听读取写入时机</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"><span class="keyword">var</span> readStream = fs.createReadStream(<span class="string">'1.rar'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> n = <span class="number">0</span></div><div class="line"></div><div class="line">readStream</div><div class="line">.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">chunk</span>) </span>&#123; <span class="comment">// 数据正在传递</span></div><div class="line">	n++</div><div class="line">	readStream.pause()</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data pause'</span>)</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'data pause end'</span>)</div><div class="line">		readStream.resume()</div><div class="line">	&#125;, <span class="number">10</span>)</div><div class="line"></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data emits'</span>)</div><div class="line">	<span class="built_in">console</span>.log(Buffer.isBuffer(chunk))  </div><div class="line"></div><div class="line">	<span class="comment">// console.log(chunk.toString('utf8')) // stream.js内容</span></div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 事件可读</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data readable'</span>)</div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(n)</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data end'</span>)</div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'close'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 流关闭结束</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data close'</span>)</div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data read error'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="3-读取写入防爆仓"><a href="#3-读取写入防爆仓" class="headerlink" title="3. 读取写入防爆仓"></a>3. 读取写入防爆仓</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> readStream = fs.createReadStream(<span class="string">'1.rar'</span>)</div><div class="line"><span class="keyword">var</span> writeStream = fs.WriteStream(<span class="string">'1-stream.rar'</span>)</div><div class="line"></div><div class="line">readStream.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">chunk</span>) </span>&#123;</div><div class="line"><span class="keyword">if</span>	(writeStream.write(chunk) === <span class="literal">false</span>)&#123; <span class="comment">// 读的数据还在缓存区</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'still cached'</span>)</div><div class="line">readStream.pause()</div><div class="line">&#125;</div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	writeStream.end()</div><div class="line">&#125;)</div><div class="line"></div><div class="line">writeStream.on(<span class="string">'drain'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'data drains'</span>)</div><div class="line">	readStream.resume()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
@@ -30,7 +31,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;一-Buffer数据流的写入与读取&quot;&gt;&lt;a href=&quot;#一-Buffer数据流的写入与读取&quot; class=&quot;headerlink&quot; title=&quot;一. Buffer数据流的写入与读取&quot;&gt;&lt;/a&gt;一. Buffer数据流的写入与读取&lt;/h2&gt;&lt;figure cla
+      &lt;p&gt;明日将与女友一起去连云之港,颇为期待ing..&lt;/p&gt;
+&lt;h2 id=&quot;一-Buffer数据流的写入与读取&quot;&gt;&lt;a href=&quot;#一-Buffer数据流的写入与读取&quot; class=&quot;headerlink&quot; title=&quot;一. Buffer数据流的写入与读取&quot;&gt;&lt;/a&gt;一. 
     
     </summary>
     
@@ -784,70 +786,6 @@ Layout: 布局/组件摆放 --&gt;
   </entry>
   
   <entry>
-    <title>html【元素一箩筐】</title>
-    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
-    <id>https://neareven.github.io/2017/06/21/01-html/</id>
-    <published>2017-06-21T11:00:00.000Z</published>
-    <updated>2017-07-05T11:22:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
-</li>
-<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
-</li>
-<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
-</li>
-<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
-</li>
-<li><p><code>ul:(unordered list)</code>: 无序列表</p>
-</li>
-<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
-</li>
-<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
-</li>
-<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
-</li>
-<li><p>字符缩写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>a</code>: 链接</p>
-</li>
-<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
-</li>
-<li><p><code>strong</code>: <strong>特别强调</strong></p>
-</li>
-<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
-</li>
-<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
-</li>
-<li><p>点击图片跳转到新的链接</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
-    
-    </summary>
-    
-    
-      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
     <title>html--&gt;CSS</title>
     <link href="https://neareven.github.io/2017/06/21/04-html/"/>
     <id>https://neareven.github.io/2017/06/21/04-html/</id>
@@ -932,6 +870,70 @@ Layout: 布局/组件摆放 --&gt;
     <summary type="html">
     
       &lt;h2 id=&quot;CSS&quot;&gt;&lt;a href=&quot;#CSS&quot; class=&quot;headerlink&quot; title=&quot;CSS&quot;&gt;&lt;/a&gt;CSS&lt;/h2&gt;&lt;h3 id=&quot;一-简介&quot;&gt;&lt;a href=&quot;#一-简介&quot; class=&quot;headerlink&quot; title=&quot;一 简介&quot;&gt;&lt;/a&gt;一 简
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html【元素一箩筐】</title>
+    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
+    <id>https://neareven.github.io/2017/06/21/01-html/</id>
+    <published>2017-06-21T11:00:00.000Z</published>
+    <updated>2017-07-05T11:22:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
+</li>
+<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
+</li>
+<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
+</li>
+<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
+</li>
+<li><p><code>ul:(unordered list)</code>: 无序列表</p>
+</li>
+<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
+</li>
+<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
+</li>
+<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
+</li>
+<li><p>字符缩写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>a</code>: 链接</p>
+</li>
+<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
+</li>
+<li><p><code>strong</code>: <strong>特别强调</strong></p>
+</li>
+<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
+</li>
+<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
+</li>
+<li><p>点击图片跳转到新的链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
     
     </summary>
     
