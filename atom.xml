@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://neareven.github.io/"/>
-  <updated>2017-07-27T08:51:18.000Z</updated>
+  <updated>2017-12-01T09:01:55.710Z</updated>
   <id>https://neareven.github.io/</id>
   
   <author>
@@ -14,6 +14,204 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Runtime - 1</title>
+    <link href="https://neareven.github.io/2017/11/27/32-runtime/"/>
+    <id>https://neareven.github.io/2017/11/27/32-runtime/</id>
+    <published>2017-11-27T03:01:00.000Z</published>
+    <updated>2017-12-01T09:01:55.710Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Working-with-Class"><a href="#Working-with-Class" class="headerlink" title="Working with Class"></a>Working with Class</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objc_msgSend(receiver, selector, arg1, arg2,...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char * class_getName(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class class_getSuperclass(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class class_setSuperclass(Class cls, Class newSuper)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOOL class_isMetaClass(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> // 返回类实例大小</div><div class="line">size_t class_getInstanceSize(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取实例变量</div><div class="line">Ivar class_getInstanceVariable(Class cls, const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取类变量</div><div class="line">Ivar class_getClassVariable(Class cls, const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOOL class_addIvar(Class cls, const char *name, size_t size, uint8_t alignment, const char *types)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// Describes the instance variables declared by a class</div><div class="line">// 返回数组长度</div><div class="line">Ivar * calss_copyIvarList(Class cls, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char *class_getIvarLayout(Clss cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void class_setIvarLayout(Class cls, const char *layout)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char *class_getWeakIvarLayout(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void class_setWeakIvarLayout(Class cls, const char *layout)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 属性获取</div><div class="line">objc_property_t class_getProperty(Class cls, const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 属性列表获取</div><div class="line">objc_property_t *class_copyPropertyList(Class cls, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// imp: a function which is the implementation of the new method.</div><div class="line">// the imp must take at least two arguments-- self &amp; _cmd</div><div class="line">// 只能替换父类的方法</div><div class="line">BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 当前类中的方法替换: </div><div class="line">IMP method_setImplementation(Method method, IMP imp)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">void myMethodImp(id self, SEL _cmd)&#123;</div><div class="line">	// impementation...</div><div class="line">&#125;</div><div class="line">class_addMethod([self class], @selector(resolveThisMethodDynamically), </div><div class="line">(IMP)myMethodIMP, &quot;v@:&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取类的实例方法[可以获取父类的实例方法]</div><div class="line">Method class_getInstanceMetod(Class aClass, SEL aSelector)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取类方法</div><div class="line">Method class_getClassMethod(Class aClass, SEL aSelector)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// Class cls 获取的是类本身. </div><div class="line">Method *class_copyMethodList(Class cls, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// to get the calss methods of a class, use </div><div class="line">// object_getClass()是获取元类的方法</div><div class="line">class_copyMethodList(object_getClass(cls), &amp;count).</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// if the method name doesn&apos;t exist, called class_method</div><div class="line">// if the method name does exist, called method_setImplementation</div><div class="line">// 如果类中没有被替换实现的原方法时,class_replaceMethod相当于直接调用class_addMethod向类中添加该方法的实现.</div><div class="line">IMP class_replaceMethod(Class cls, SEL name, IMP imp, const char *types)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IMP class_getMethodImplementation(Class cls, SEL name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stret: [st: struct] [ret: return]</div><div class="line"></div><div class="line">IMP class_getMethodImplementation_stret(Class cls, SEL name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// respondsToSelector or instancesRespondToSelector</div><div class="line">BOOL class_respondsToSelector(Class cls, SEL sel)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// add a protocol to a class</div><div class="line">BOOL class_addProtocol(Class cls, Protocol *protocol)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  add a property to a class</div><div class="line"> * @param attributes: an array of property attributes</div><div class="line"> */</div><div class="line">BOOL class_addProperty(Class cls, const char *name, const objc_property_attribute *attributes, unsigned int attributeCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  replace a property of a class</div><div class="line"> */</div><div class="line">void class_replaceproperty(Class cls, const char *name, const objc_property_attribute *attributes, unsigned int attributeCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  判断是否遵循协议</div><div class="line"> */</div><div class="line">BOOL class_conformsToProtocol(Class cls, Protocol *protocol)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Protocol ** class_copyProtocolist(Class cls, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int class_getVersion(Class theClass)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void class_setVersion(Class theClass, int version)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 不主动调用</div><div class="line">Class objc_getFutureClass(const char *name)</div><div class="line">void objc_setFutureClass(Class cls, const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  creates a new class an metaclass</div><div class="line"> * @descp  To create a new class, start by objc_allocateClassPair,then set the class&apos;s attributes with functions like class_addMethod and class_addIvar. When you are done building the class, call objc_registerClassPair.</div><div class="line"> * @param  superclass: nil 或父类</div><div class="line"> * @param  extraBytes: 0</div><div class="line"> */</div><div class="line"></div><div class="line">objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  destroys a class and its associated metaclass. the class must have been allocated using objc_allocateClassPair.</div><div class="line"> * @param  </div><div class="line"> */</div><div class="line">void objc_disposeClassPair(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  register a class that allocated using objc_allocateClassPair</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">void objc_registerClassPair(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  used by Foundation&apos;s Key-Value Observaing</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">objc_duplicateClass</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  creates an instance of a class, allocating memory for the class in the default malloc memory zone.</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id class_createInstance(Class cls, size_t extraBytes)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  creates an instance of a class at the specified location</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id objc_constructInstance(Class cls, void *bytes)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  Destroys an instance of a class without freeing memory and removes any of its associated references.</div><div class="line"> */</div><div class="line">void objc_destructInstance(id obj)</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Instances"><a href="#Working-with-Instances" class="headerlink" title="Working with Instances"></a>Working with Instances</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  returns a copy of a given object</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id object_copy(id obj, size_t size)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 设置新的方法</div><div class="line">Ivar object_setInstanceVariable(id obj, const char *name, void *value)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取方法</div><div class="line">Ivar object_getInstanceVariable(id obj, const char *name, void **outValue)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  returns a pointer to any extra bytes allocated with a instance given object</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">OBJC_EXPORT void *object_getIndexedIvars(id obj)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  reads the value of an instance variable (ivar : instance variable)</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id object_getIvar(id object, Ivar ivar)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @param object: the object containing the instance variable whose value you want to set</div><div class="line"> * @param ivar: the instance variable whose value you want to set</div><div class="line"> */</div><div class="line">void object_setIvar(id object, Ivar ivar, id value)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char *object_getClassName(id obj)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 获取元类</div><div class="line">//objc_getMetaClass</div><div class="line">Class object_getClass(id object)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class object_setClass(id object, Class cls)</div></pre></td></tr></table></figure>
+<h2 id="Obtaining-Class-Definitions"><a href="#Obtaining-Class-Definitions" class="headerlink" title="Obtaining Class Definitions"></a>Obtaining Class Definitions</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int objc_getClassList(Class *buffer, int bufferLen)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">int numClasses;</div><div class="line">Class *classes = NULL;</div><div class="line"></div><div class="line">classes = NULL;</div><div class="line">numClasses = objc_getClassList(NULL, 0);</div><div class="line">if (numClasses &gt; 0)</div><div class="line">&#123;</div><div class="line">	classes = malloc(sizeof(Class) *numClasses);</div><div class="line">	numClasses = objc_getClassList(classes, numClasses);</div><div class="line">	free(classes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  creates and returns a list of pointers to all registered class definitions</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">Class *objc_copyClassList(unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief   returns the class definition of a specified class</div><div class="line"> * @brief  objc_getClass need to see whether the class is registered</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id objc_lookUpClass(const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id objc_getClass(const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  this function is the same as objc_getClass, but kills the process if the class is not found</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id objc_getRequiredClass(const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id objc_getMetaClass(const char *name)</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Instance-Variables"><a href="#Working-with-Instance-Variables" class="headerlink" title="Working with Instance Variables"></a>Working with Instance Variables</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  returns the name of an isntance variable</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">const char * ivar_getName(Ivar ivar)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 在class_addMethod时用到.获取变量的type类型</div><div class="line">// v@:  v: void @:id ::selector</div><div class="line">const char * ivar_getTypeEncoding(Ivar ivar)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  id or other object types, call objcet_getIvar/object_setIvar</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">ptrdiff_t ivar_getOffset(Ivar ivar)</div></pre></td></tr></table></figure>
+<h2 id="Associative-references"><a href="#Associative-references" class="headerlink" title="Associative references"></a>Associative references</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  sets an associated value for a given object using a given key and association policy 为指定对象设置键值</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">void objc_setAssociatedObject(id object, void *key, id value ,</div><div class="line">objc_AssocationPolicy policy)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id objc_getAssociatedObject(id objcet, void *key)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  设置objc_setAssociatedObjcet 的value为nil来清除对象间的关联,下面的方法还会清除与这个对象的其他代理</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">void objc_removeAssociatedObjects(id object)</div></pre></td></tr></table></figure>
+<h2 id="Sending-Messages"><a href="#Sending-Messages" class="headerlink" title="Sending Messages"></a>Sending Messages</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">objc_msgSend / objc_msgSend_stret / objc_msgSendSuper / objc_msgSendSuper_stret</div><div class="line">_stret: 发送数据结构类型的消息</div><div class="line"></div><div class="line">// 给父类发送消息用的objc_msgSendSuper</div><div class="line">id objc_msgSend(id self, SEL op, arg...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  sends a message with a floating-point return value to an instance of a class</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">double objc_msgSend_fpret(id self, SEL op, arg...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_msgSend_stret(void *stretAddr, id theReceiver, SEL theSelector, arg...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// if (self = [super init])&#123;&#125;</div><div class="line">id objc_msgSendSuper(struct objc_super *super, SEL op, arg...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_msgSendSuper_stret(struct objc_super *super, SEL op, arg...)</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Methods"><a href="#Working-with-Methods" class="headerlink" title="Working with Methods"></a>Working with Methods</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  calls the implementation of a specified method</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id method_invoke(id receiver, Method m, arg...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void method_invoke_stret(id receiver, Method m, ...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SEL method_getName(Method method)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 查找对应方法的IMP实现</div><div class="line">IMP method_getImplementation(Method method)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char * method_getTypeEncoding(Method method)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">char * method_copyRetrunType(Method method)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  returns a string describing a single parameter type of a method</div><div class="line"> * @param index: the index of the parameter to inspect</div><div class="line"> */</div><div class="line">char * method_copyArgumentType(Method method, unsigned int index)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void method_getReturnType(Method method, char *dst, size_t dst_len)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unsigned method_getNumberOfArguments(Method method)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void method_getArgumentType(Method method, unsigned int index, char *dst, size_t dst_len)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct objc_method_description *method_getDescription(Method m)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 给IMP替换新方法</div><div class="line">IMP method_setImplementation(Method method, IMP imp)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  方法交换</div><div class="line"> * @param</div><div class="line"> */</div><div class="line"></div><div class="line">void method_exchangeImpementations(Method m1, Method m2)</div><div class="line">IMP imp1 = method_getImplementation(m1);</div><div class="line">IMP imp2 = method_getImplementation(m2);</div><div class="line">method_setImplementation(m1, imp2);</div><div class="line">method_setImplementation(m2, imp1);</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Libraies"><a href="#Working-with-Libraies" class="headerlink" title="Working with Libraies"></a>Working with Libraies</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  返回被载入的静态库与动态库的名称</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">const char **objc_copyImageNames(unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char *class_getImageName(Class cls)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  返回选定的静态库或动态库中包含的类名称</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">const char **objc_copyClassNamesForImage(const char *image, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Selectors"><a href="#Working-with-Selectors" class="headerlink" title="Working with Selectors"></a>Working with Selectors</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char * sel_getName(SEL aSelector)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SEL sel_registerName(const char *str)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 与sel_regiterName等同</div><div class="line">SEL sel_getUid(const char *str)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOOL sel_isEqual(SEL lhs, SEL rhs)</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Protcols"><a href="#Working-with-Protcols" class="headerlink" title="Working with Protcols"></a>Working with Protcols</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Protocol *objc_getProtocol(const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Protocol **objc_copyProtocolList(unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  创建协议实例</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">Protocol *objc_allocateProtocol(const char *name)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_registerProtocol(Protocol *proto)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  添加协议</div><div class="line"> * @param isRequiredMethod: 是否必须实现</div><div class="line"> * @paam isInstanceMethod: yes: method是实例方法 no: method是类方法</div><div class="line"> */</div><div class="line">void protocol_addMethodDescription(Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  将已注册的协议添加到另一个正在构建的协议中(under construction): allocated but not yet registered</div><div class="line"> * @param  proto: 正在构建的协议</div><div class="line"> */</div><div class="line">void protocol_addProtocol(Protocol *proto, Protocol *addition)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  adds a property to a protocol that is under construction</div><div class="line"> * @param  isInstanceProperty为no时,任何属性都不会被添加</div><div class="line"> */</div><div class="line">void protocol_addProperty(Protocol *proto, const char *name, </div><div class="line">const objc_property_attribute_t *attributes, unsigned int attributeCount, </div><div class="line">BOOL isRequiredMethod, BOOL isInstanceProperty)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const char *protocol_getName(Protocol *p);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOOL protocol_isEqual(Protocol *proto, Protocol *other)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  return an array of method descriptions of methods meeting a iven specification for a given protocol 返回满足选定协议的方法描述数组</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">struct objc_method_description *protocol_copyMethodDescriptionList(</div><div class="line">Protocol *p, BOOL isRequiredMethod, BOOL isInstanceMethod, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">struct objc_method_description protocol_getMethodDescription(</div><div class="line">Protocol *p, SEL aSel, BOOL isRequiredMethod, BOOL isInstanceMethod)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  返回协议声明的属性</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">objc_property_t *protocol_copyPropertyList(Protocol *protocol, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objc_property_t protocol_getProperty(Protocol *proto, const char *name, BOOL isRequiredProperty, BOOL isInstanceProperty)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Protocol **protocol_copyProtocolList(Protocol *proto, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BOOL protocol_conformsToProtocol(Protocol *proto, Protocol *other)</div><div class="line"> @protocol ProtocolName&lt; protocol list&gt;</div></pre></td></tr></table></figure>
+<h2 id="Working-with-Properties"><a href="#Working-with-Properties" class="headerlink" title="Working with Properties"></a>Working with Properties</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取属性名称</div><div class="line">const char *property_getName(objc_property_t property)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 获取属性值</div><div class="line">const char *property_getAttributes(objc_property_t property)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">char *property_copyAttributeValue(objc_property_t protocol, const char *attributeName)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objc_property_attribute_t *property_copyAttributeList(objc_property_t property, unsigned int *outCount)</div></pre></td></tr></table></figure>
+<h2 id="Using-Objective-C-Language-Features"><a href="#Using-Objective-C-Language-Features" class="headerlink" title="Using Objective-C Language Features"></a>Using Objective-C Language Features</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  Inserted by the complier when a mutation is detected during a foreach iteration</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">void objc_enumerationMutaion(id obj)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_setEnumerationMutationHandler(void (*handler)(id))</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IMP imp_implementationWithBlock(id block)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id imp_getBlock(IMP anImp)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOOL imp_removeBlock(IMP anImp)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id objc_loadWeak(id *location)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  store a new value in a __weak variable</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">id objc_storeWeak(id *location, id obj)</div></pre></td></tr></table></figure>
+<h2 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  an apaque type that represents an Objective-C class</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">typedef struct  objc_class *Class;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_method *Method;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_ivar *Ivar;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_category *Category;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_property *objc_property_t;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id (*IMP)(id, SEL, arg...)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_selector *SEL;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct objc_method_description &#123; SEL name; char *types;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">struct objc_method_list &#123;struct objc_method_list *obsolete; </div><div class="line">int method_count; struct obj_method method_list[1]&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @brief  Performance optimization for method calls. contains pointers to recently used methods</div><div class="line"> * @param</div><div class="line"> */</div><div class="line">struct objc_cache &#123;unsigned int mask; unsigned int occupied; Method buckets[1]&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct objc_protocol_list&#123;struct objc_protocol_list *next; int count; Protocol *list[1]&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct &#123;const char *name; const char *value;&#125; objc_property_attribute_t;</div></pre></td></tr></table></figure>
+<h2 id="Instance-Data-Types"><a href="#Instance-Data-Types" class="headerlink" title="Instance Data Types"></a>Instance Data Types</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id pointer to an instance of a class</div><div class="line">typedef struct objc_object *id;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// objc_object represents an instance of a class</div><div class="line">struct objc_object &#123;Class isa&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// objc_super specifies the superclass of an instance</div><div class="line">struct objc_supper &#123;id receiver; Class class&#125;;</div></pre></td></tr></table></figure>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef signed char BOOL;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef uintptr_t objc_AssociationPolicy;</div></pre></td></tr></table></figure>
+<h2 id="Type-Encodings"><a href="#Type-Encodings" class="headerlink" title="Type Encodings"></a>Type Encodings</h2><blockquote>
+<p> Interacting with the Runtime at three distinct levels: Objective-C source code; Nsobject methods[isKindOfClass/isMemberOfClass/respondsToSelector/conformsToProtocol/methodForSelector]; Runtime functions;</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Working-with-Class&quot;&gt;&lt;a href=&quot;#Working-with-Class&quot; class=&quot;headerlink&quot; title=&quot;Working with Class&quot;&gt;&lt;/a&gt;Working with Class&lt;/h2&gt;&lt;figure c
+    
+    </summary>
+    
+    
+      <category term="ios" scheme="https://neareven.github.io/tags/ios/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tuxera NTFS for Mac 2016.1 注册版 - 最好用的NTFS文件系统驱动</title>
+    <link href="https://neareven.github.io/2017/10/04/31-tuxera-ntfs-2016-1/"/>
+    <id>https://neareven.github.io/2017/10/04/31-tuxera-ntfs-2016-1/</id>
+    <published>2017-10-04T03:01:00.000Z</published>
+    <updated>2017-10-04T03:53:06.949Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-10-04-TuxeraNTFS.jpg" alt="TuxeraNTFS"></p>
+<p>Mac只支持读取NTFS的文件,但不支持写入,当我们想把1024上下载的小电影拷贝到移动硬盘时,会发现我们的移动硬盘或U盘弹出大大的拒绝提示,而如果安装了Tuxera NTFS,这个问题就迎刃而解了.<br>至于tuxera的其他强大功能,硬盘管理/格式转换/数据保护,你会用吗,反正我不会.</p>
+<p><code>Tuxera NTFS for Mac 2016.1 支持macOS high sierra</code>,对于手痒升级到了macOS sierra的我来说,再无后顾之忧了.</p>
+<p><img src="http://orvnx1k8y.bkt.clouddn.com/2017-10-04-15070868830631.jpg" alt="只要195.18"><br>官网195.18大洋,支持正版的童鞋可以去看看<a href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/" target="_blank" rel="external">tuxera官网</a>, 至于我这个穷鬼,就只好找crack了.</p>
+<h3 id="Tuxera-NTFS-2016-1破解方法"><a href="#Tuxera-NTFS-2016-1破解方法" class="headerlink" title="Tuxera NTFS 2016.1破解方法:"></a>Tuxera NTFS 2016.1破解方法:</h3><ol>
+<li><code>断网</code> <code>断网</code> <code>断网</code>,以下步骤请在断网后执行</li>
+<li><p>点击tuxerantfs_2016.1.dmg,install Tuxera NTFS<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-10-04-15070876766182.jpg" alt=""></p>
+</li>
+<li><p>会默认选择试用版,继续<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-10-04-15070877669132.jpg" alt=""></p>
+</li>
+<li><p>安装完成后会进入这个界面, <code>不要点击重新启动!!!</code><br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-10-04-15070878274461.jpg" alt=""></p>
+</li>
+<li><p>回到这个目录,将Crack文件夹中的Tuxera NTFS移动到 <code>/Library/PreferencePanes/Tuxera NTFS.prefPane/Contents/MacOS</code>进行替换<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-10-04-15070880960849.jpg" alt=""></p>
+</li>
+<li>替换好了,重新启动你的电脑吧</li>
+<li>重启好后,打开系统偏好设置,出现了这个图标,进去,在激活下输入产品密钥就可以了</li>
+<li>如果发现产品密钥没法输入,那就重新执行以上步骤</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">8GNQX-7440M-Z1LXQ-YZ3PY</div><div class="line">8X1QJ-0640Y-71K7Q-ZDGYK</div><div class="line">8X96X-4P40W-71LEY-RGAP6</div></pre></td></tr></table></figure>
+<ol>
+<li>现在你可以联网肆意的下载小电影了</li>
+</ol>
+<h2 id="Tuxera-NTFS-2016-1-mac破解版下载地址"><a href="#Tuxera-NTFS-2016-1-mac破解版下载地址" class="headerlink" title="Tuxera NTFS 2016.1 mac破解版下载地址"></a><a href="https://page10.ctfile.com/fs/15567510-222909040" target="_blank" rel="external">Tuxera NTFS 2016.1 mac破解版下载地址</a></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://orvnx1k8y.bkt.clouddn.com/2017-10-04-TuxeraNTFS.jpg&quot; alt=&quot;TuxeraNTFS&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Mac只支持读取NTFS的文件,但不支持写入,当我们想把1024上下载的小电影拷贝到
+    
+    </summary>
+    
+    
+      <category term="mac app" scheme="https://neareven.github.io/tags/mac-app/"/>
+    
+  </entry>
   
   <entry>
     <title>jQuery</title>
@@ -126,8 +324,8 @@
   
   <entry>
     <title>node.js Stream</title>
-    <link href="https://neareven.github.io/2017/07/21/29-node.js-wechat/"/>
-    <id>https://neareven.github.io/2017/07/21/29-node.js-wechat/</id>
+    <link href="https://neareven.github.io/2017/07/21/28-node.js-stream/"/>
+    <id>https://neareven.github.io/2017/07/21/28-node.js-stream/</id>
     <published>2017-07-21T04:40:00.000Z</published>
     <updated>2017-07-21T08:39:06.000Z</updated>
     
@@ -162,8 +360,8 @@
   
   <entry>
     <title>node.js Stream</title>
-    <link href="https://neareven.github.io/2017/07/21/28-node.js-stream/"/>
-    <id>https://neareven.github.io/2017/07/21/28-node.js-stream/</id>
+    <link href="https://neareven.github.io/2017/07/21/29-node.js-wechat/"/>
+    <id>https://neareven.github.io/2017/07/21/29-node.js-wechat/</id>
     <published>2017-07-21T04:40:00.000Z</published>
     <updated>2017-07-21T08:39:06.000Z</updated>
     
@@ -522,30 +720,6 @@
   </entry>
   
   <entry>
-    <title>node.js开发实战详解</title>
-    <link href="https://neareven.github.io/2017/07/09/11-js/"/>
-    <id>https://neareven.github.io/2017/07/09/11-js/</id>
-    <published>2017-07-09T01:00:00.000Z</published>
-    <updated>2017-07-11T02:32:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="node.js" scheme="https://neareven.github.io/tags/node-js/"/>
-    
-      <category term="node.js开发实战详解" scheme="https://neareven.github.io/tags/node-js%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E8%AF%A6%E8%A7%A3/"/>
-    
-  </entry>
-  
-  <entry>
     <title>javascript高级程序设计:六.对象</title>
     <link href="https://neareven.github.io/2017/07/09/08-js/"/>
     <id>https://neareven.github.io/2017/07/09/08-js/</id>
@@ -655,6 +829,30 @@
       <category term="javascript" scheme="https://neareven.github.io/tags/javascript/"/>
     
       <category term="javascript高级程序设计" scheme="https://neareven.github.io/tags/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node.js开发实战详解</title>
+    <link href="https://neareven.github.io/2017/07/09/11-js/"/>
+    <id>https://neareven.github.io/2017/07/09/11-js/</id>
+    <published>2017-07-09T01:00:00.000Z</published>
+    <updated>2017-07-11T02:32:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="node.js" scheme="https://neareven.github.io/tags/node-js/"/>
+    
+      <category term="node.js开发实战详解" scheme="https://neareven.github.io/tags/node-js%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E8%AF%A6%E8%A7%A3/"/>
     
   </entry>
   
@@ -941,6 +1139,70 @@ Layout: 布局/组件摆放 --&gt;
   </entry>
   
   <entry>
+    <title>html【元素一箩筐】</title>
+    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
+    <id>https://neareven.github.io/2017/06/21/01-html/</id>
+    <published>2017-06-21T11:00:00.000Z</published>
+    <updated>2017-07-05T11:22:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
+</li>
+<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
+</li>
+<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
+</li>
+<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
+</li>
+<li><p><code>ul:(unordered list)</code>: 无序列表</p>
+</li>
+<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
+</li>
+<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
+</li>
+<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
+</li>
+<li><p>字符缩写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>a</code>: 链接</p>
+</li>
+<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
+</li>
+<li><p><code>strong</code>: <strong>特别强调</strong></p>
+</li>
+<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
+</li>
+<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
+</li>
+<li><p>点击图片跳转到新的链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
     <title>html--&gt;CSS</title>
     <link href="https://neareven.github.io/2017/06/21/04-html/"/>
     <id>https://neareven.github.io/2017/06/21/04-html/</id>
@@ -1030,112 +1292,6 @@ Layout: 布局/组件摆放 --&gt;
     
     
       <category term="html" scheme="https://neareven.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html【元素一箩筐】</title>
-    <link href="https://neareven.github.io/2017/06/21/01-html/"/>
-    <id>https://neareven.github.io/2017/06/21/01-html/</id>
-    <published>2017-06-21T11:00:00.000Z</published>
-    <updated>2017-07-05T11:22:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li><p><code>&lt;img src=&quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&quot; alt=&quot;padding&quot; width=&quot;48&quot; height:&quot;100&quot;&gt;</code>:图片插入[alt 为图片描述]</p>
-</li>
-<li><p><code>&lt;a href=&quot;http://wickedlysmart.com/buzz/#Coffee&quot; title=&quot;所要链接的页面的文本的描述&quot;&gt;back to longue&lt;/a&gt;</code>:插入链接[#Coffee 直接跳转到对应网页的Coffee部分]</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// id表示可以直接链接到该元素</div><div class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"Coffee"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">// 链接到同一个页面上的top目标</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>Back to top<span class="tag">&lt;/<span class="name">a</span>&gt;</span>,</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// _blank :浏览器会显示新的窗口来显示页面[未命名,可以用任意不含空格的字段来命名]</div><div class="line">// </div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li><p><code>&lt;q&gt; &lt;/q&gt;</code>: 内联引用</p>
-</li>
-<li><p><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code>: 长(块)引用</p>
-</li>
-<li><p><code>&lt;br&gt;</code>: 结尾br用于换行</p>
-</li>
-<li><p><code>ul:(unordered list)</code>: 无序列表</p>
-</li>
-<li><p><code>ol:(ordered list)</code>: 有序列表&lt;会自动创建序号&gt;</p>
-</li>
-<li><p><code>li:(list item)</code>: 每个li元素都会成为一个列表项</p>
-</li>
-<li><p><code>&lt;dt&gt;&lt;dd&gt;</code>: 缩进式列表<br><img src="https://ooo.0o0.ooo/2017/06/22/594ba589b90dd.png" alt="列表样式"></p>
-</li>
-<li><p>字符缩写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; : &quot;&amp;gt&quot; </div><div class="line">&lt; : &quot;&amp;lt&quot;</div><div class="line">the &amp;lt html &amp;gt  ==&gt; the &lt; html &gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>a</code>: 链接</p>
-</li>
-<li><p><code>&lt;em&gt;&lt;em&gt;</code>: <em>强调不同文本<em> </em></em></p>
-</li>
-<li><p><code>strong</code>: <strong>特别强调</strong></p>
-</li>
-<li><p><code>pre</code>: <pre>用来指定文本的格式<pre>让浏览器按我们输入的方式原样显示文本 </pre></pre></p>
-</li>
-<li><p><code>time</code> :  <time>2017.06.22用来显示日期<time></time></time></p>
-</li>
-<li><p>点击图片跳转到新的链接</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'html/downtown.html'</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"downtown.jpg"</span> <span class="attr">alt</span>=<span class="string">"an ipod in downtown"</span> <span class="attr">title</span>=<span class="string">"downtown"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><code>meta</code>: 告诉浏览器相关页面信息 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;img src=&amp;quot;https://ooo.0o0.ooo/2017/06/22/594ba56541612.png&amp;quot; alt=&amp;quot;padding&amp;quot; width=&amp;quot;48&amp;quot; heig
-    
-    </summary>
-    
-    
-      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>茶者,南方嘉木也</title>
-    <link href="https://neareven.github.io/2017/06/20/05-book/"/>
-    <id>https://neareven.github.io/2017/06/20/05-book/</id>
-    <published>2017-06-20T04:00:00.000Z</published>
-    <updated>2017-06-28T01:46:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>南方有嘉木，不夜之侯，筑草为城，茶人三部曲。喜欢这样的书，写一个时代，几辈人的故事。家事国事儿女情长，抑或疯狂，抑或哀怨。始自太平天国，终于1997，近百年历史，满目疮痍。赵寄客，一代侠士，杭天醉，枉自风流，于国家，自有肝胆。但这些，也不过只是时代的一个注脚罢了。倒不如那些微小的事物，反而更充满血与肉。忘忧茶庄，曼生壶，天目盏，狮峰，普洱，合上书，口舌生津。”水里火里去得，热里冷里经得，没有这番功夫，哪里来的好茶”。<br>满纸荒唐言，一把辛酸泪，都云作者痴，谁解其中味。经十载，书方成。且抛去所有的故事，仅茶一字，便不枉下得此番功夫了。何况于饮茶之时，可以细细品茶之外的故事。杭家5代，也只有这两种性格，性子平缓，心灵细腻，而另一种，激情而狂热。两者泾渭分明，始终未曾现于一人身。吴家茶清伯，三代杭嘉和，至忘忧止。嘉平，寄草，布朗，得放，迎霜，这另一种性格，竟也颤颤巍巍熬过了那段岁月。<br>杭州，最繁华的地方，也是温柔女儿乡，大宋拱手相让之都。这样的地方，本不应有铮铮铁骨，只适合端上一杯茶，坐于西湖边，论家长里短。却仍挡不住这血性之人。<br>南方有嘉木，是为茶也。内清明，外方直，吾与尔皆藏，曼生壶者。斯壶当饮斯茶，终满口茶香。<br>小驻为佳，且吃了赵州茶去，日归可缓，试同歌陌上花来。时候不早了，且梦中吃茶去吧。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;南方有嘉木，不夜之侯，筑草为城，茶人三部曲。喜欢这样的书，写一个时代，几辈人的故事。家事国事儿女情长，抑或疯狂，抑或哀怨。始自太平天国，终于1997，近百年历史，满目疮痍。赵寄客，一代侠士，杭天醉，枉自风流，于国家，自有肝胆。但这些，也不过只是时代的一个注脚罢了。倒不如那些
-    
-    </summary>
-    
-    
-      <category term="拆书记" scheme="https://neareven.github.io/tags/%E6%8B%86%E4%B9%A6%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>春雪</title>
-    <link href="https://neareven.github.io/2017/02/03/13-book/"/>
-    <id>https://neareven.github.io/2017/02/03/13-book/</id>
-    <published>2017-02-03T13:10:00.000Z</published>
-    <updated>2017-07-14T04:53:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>三岛由纪夫长篇小说的第一部，之后是奔马。<br>三岛的书总是透着浓浓的悲凉气，金阁寺或春雪皆是。还记着大学时学世界文化概论，老师讲到日本文学有物哀之美，凋谢的樱花随风飘动。<br>一个少不更事，不懂爱为何物，生来便是为了制造伤害的人，最终于二十二岁孤寂的死去，他最后看到的是什么场景呢？飘着大雪的早晨，清显与聪子坐着马车踏雪的情景吧，唯有此，才能笑着离去吧。<br>这是一个绝情无情的人，与太宰治的人间失格少年一般，孤独的来到此地，未曾敞开心扉，父母或者知交。或许应该称为自私的人吧，也不对，加入自己的道德批判了。是一个禁锢在自己牢笼里的人。成熟不是一霎那的转变，拨开云雾，总是在经历诸多苦痛之后的慢慢自省。在清显终于找到自己的所爱时，或者才真正长大吧。<br>因少时的执拗酿了这样的悲剧。<br>在获取极乐之后，还剩什么？要去找寻什么？无论绚烂还是苦痛都不是永恒的，想让自己沉醉在任一种状态之中不复醒？唯有知识的不断获取才是永恒的吧，获取新知识来填充成就感，真实的成就感，不再是虚妄的。荷尔蒙的释放，确实会乱了理智。<br>湖北省博物馆的小小讲解员，不论他是死记硬背这么多知识还是其它，但古物本就是繁多的，能从编钟看到青铜器制造工艺，音乐的审美和艺术水准，当时的生活习惯与风俗，真的是浩如烟海，再学20年也不敢称懂了，所以很佩服那些随便聊起啥都能侃侃而谈的人，肚子里有墨水吧。<br>历史真的很有趣，一叶子亦可知秋</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;三岛由纪夫长篇小说的第一部，之后是奔马。&lt;br&gt;三岛的书总是透着浓浓的悲凉气，金阁寺或春雪皆是。还记着大学时学世界文化概论，老师讲到日本文学有物哀之美，凋谢的樱花随风飘动。&lt;br&gt;一个少不更事，不懂爱为何物，生来便是为了制造伤害的人，最终于二十二岁孤寂的死去，他最后看到的是
-    
-    </summary>
-    
-    
-      <category term="拆书记" scheme="https://neareven.github.io/tags/%E6%8B%86%E4%B9%A6%E8%AE%B0/"/>
     
   </entry>
   

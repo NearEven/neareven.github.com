@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://neareven.github.io/2017/11/27/32-runtime/</loc>
+    
+    <lastmod>2017-12-01T09:01:55.710Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://neareven.github.io/2017/10/04/31-tuxera-ntfs-2016-1/</loc>
+    
+    <lastmod>2017-10-04T03:53:06.949Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://neareven.github.io/2017/07/27/30-jQuery/</loc>
     
     <lastmod>2017-07-27T08:51:18.000Z</lastmod>
@@ -191,14 +205,14 @@
   </url>
   
   <url>
-    <loc>https://neareven.github.io/about/index.html</loc>
+    <loc>https://neareven.github.io/tags/index.html</loc>
     
     <lastmod>2017-07-05T11:33:27.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://neareven.github.io/tags/index.html</loc>
+    <loc>https://neareven.github.io/about/index.html</loc>
     
     <lastmod>2017-07-05T11:33:27.000Z</lastmod>
     
