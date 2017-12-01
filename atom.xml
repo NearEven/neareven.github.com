@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://neareven.github.io/"/>
-  <updated>2017-12-01T09:15:12.093Z</updated>
+  <updated>2017-12-01T09:50:03.266Z</updated>
   <id>https://neareven.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tuxera NTFS for Mac 2016.1 注册版 - 最好用的NTFS文件系统驱动</title>
+    <link href="https://neareven.github.io/2017/12/01/34-thunder/"/>
+    <id>https://neareven.github.io/2017/12/01/34-thunder/</id>
+    <published>2017-12-01T04:42:00.000Z</published>
+    <updated>2017-12-01T09:50:03.266Z</updated>
+    
+    <content type="html"><![CDATA[<p>迅雷内讧升级,bitcoin错过了,玩客币又错过了.与发财无源啊.</p>
+<h1 id="MAC版-vip破解"><a href="#MAC版-vip破解" class="headerlink" title="MAC版:vip破解"></a>MAC版:vip破解</h1><p>迅雷mac破解版,<code>需要先登录自己的账号</code>,之后才可以享用vip加速<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-12-01-9BA5AB01-795C-4CDE-8A79-A538702F27A4.png" alt="9BA5AB01-795C-4CDE-8A79-A538702F27A4"></p>
+<h1 id="iOS版"><a href="#iOS版" class="headerlink" title="iOS版"></a>iOS版</h1><p>迅雷iOS企业版也出了,除了广告多点,到也可以忍受,<br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-12-01-221512120948_.pic.jpg" width="50%" height="50%"><br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-12-01-Screen Shot 2017-12-01 at 下午5.29.13.png" width="50%" height="50%"><br><img src="http://orvnx1k8y.bkt.clouddn.com/2017-12-01-Screen Shot 2017-12-01 at 下午5.29.29.png" width="50%" height="50%"></p>
+<h1 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a>下载链接</h1><p>##mac: <a href="https://u15567510.ctfile.com/fs/15567510-229970659" target="_blank" rel="external">mac版VIP下载链接</a></p>
+<p>##iOS: <a href="https://ithunder-ota.a.88cdn.com/download-guide/step1.html" target="_blank" rel="external">把这个链接拷贝到iPhone上用safari打开</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;迅雷内讧升级,bitcoin错过了,玩客币又错过了.与发财无源啊.&lt;/p&gt;
+&lt;h1 id=&quot;MAC版-vip破解&quot;&gt;&lt;a href=&quot;#MAC版-vip破解&quot; class=&quot;headerlink&quot; title=&quot;MAC版:vip破解&quot;&gt;&lt;/a&gt;MAC版:vip破解&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="mac app" scheme="https://neareven.github.io/tags/mac-app/"/>
+    
+  </entry>
   
   <entry>
     <title>Runtime -2</title>
@@ -1275,99 +1301,6 @@ Layout: 布局/组件摆放 --&gt;
       <category term="iOS" scheme="https://neareven.github.io/tags/iOS/"/>
     
       <category term="tangram" scheme="https://neareven.github.io/tags/tangram/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html--&gt;CSS</title>
-    <link href="https://neareven.github.io/2017/06/21/04-html/"/>
-    <id>https://neareven.github.io/2017/06/21/04-html/</id>
-    <published>2017-06-21T11:00:00.000Z</published>
-    <updated>2017-06-30T03:10:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 限定body样式 p &#123;&#125;, head &#123;&#125;, h1 &#123;&#125;, </div><div class="line">body &#123;</div><div class="line">	background-color: #ffffff;</div><div class="line">	margin-left: 20%;</div><div class="line">	margin-right: 20%;</div><div class="line">	border:2px dotted black; // 宽为2px的圆点黑色边框</div><div class="line">	padding: 10px ;   (10px 10px 10px 10px,内边距)</div><div class="line">	font-family: sans-serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><link rel="stylesheet" type="text/css" href="lounge.css"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">rel 指定了html文件与所链接的文件间的关系,这里链接到的是样式表,所以使用stylesheet </div><div class="line">``</div><div class="line"></div><div class="line">1. 	``li a&#123;&#125;`` : 右边的标签包含在左边的标签里</div><div class="line">2.	`` .用来选择class属性``, ``#用来选择id属性``,id 具有唯一性, class可以多个标签用同一个属性</div><div class="line">3.	``li a:hover:not(.active) &#123;&#125;`` : 当鼠标停在所有li标签里的a标签,但是a的class属性以不等于active的时候执行&#123;&#125;</div><div class="line"></div><div class="line">4. 类: </div><div class="line">```css</div><div class="line">	&lt;p class=&quot;greenTea&quot;&gt;  ... &lt;/p&gt;</div><div class="line"></div><div class="line">	p.greenTea &#123;</div><div class="line">		color: green;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 设置greenTea中的所有元素</div><div class="line">	.greenTea &#123;&#125;</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>一个元素加入多个类: </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;p class = "greenTea blueBerry raspberry"&gt; ..&lt;/p&gt;</div><div class="line">如果多个类中定义了同样的属性,如何确定最终选用哪个类的属性?</div><div class="line">如果属性相同,后面列出的规则会胜出</div></pre></td></tr></table></figure>
-</li>
-<li><p>属性</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">width: 设置内容区的宽度,不包括内边距,边框,外边距</div><div class="line">font-weight: 文本粗细--&gt;bold/normal</div><div class="line">left: 指定元素左边所在位置</div><div class="line">line-height: 设置文本元素中的行间距</div><div class="line">top: 元素顶部的位置</div><div class="line">text-align: 文本对齐[对块中的所有内联元素都设置对齐,如果直接在内联元素中使用(&lt;img&gt;)中,则无效]</div><div class="line">letter-spacing: 在字母间设置间距. [l i k e]</div><div class="line">font-style: 设置斜体文本--&gt;no italic/ italic</div><div class="line">list-style: 设置列表中列表项的外观</div><div class="line">border-style: 边框:实线/虚线/破折线--&gt;solid/dotted/dashed</div><div class="line">border-width: thin/medium/thick</div><div class="line">border-top-width:指定某一边边框</div><div class="line">border-top-left-radius:设定角度</div><div class="line">padding: 内边距[上右下左]</div><div class="line">background-image: 背景图片--&gt;url("images/cocktail.gif") repeat-x;</div><div class="line">text-decoration: 上划线/下划线/删除线--&gt;underline/overline/line-through</div><div class="line">background-position: top left right center bottom</div><div class="line">background-repeat: repeat/repeat-x(水平方向上重复)/repeat-y/inherit(按父元素的设置来处理)/no-repeat</div></pre></td></tr></table></figure>
-</li>
-<li><p>定义自己的字体</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@font-face &#123;</div><div class="line">	font-family:"myfont",</div><div class="line">	src: url(http://...woff),</div><div class="line">		 url(http://...tff);</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1 &#123;</div><div class="line">	font-family: "myfont",sans-serif; /*  如果没有找到myfont字体,则调用sans-serif*/</div><div class="line">&#125;</div><div class="line"></div><div class="line">// @font-face为内置css规则,同样的还有</div><div class="line">@import: css中导入其他的css文件[与html中的&lt;link&gt;类似]</div><div class="line">@media: 创建特定的css, 如印刷页/桌面屏幕/手机</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置字体大小: 相对于父元素的大小[body默认像素为16px,</p><h4>与body相同]<p></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">150%,1<span class="selector-class">.5em</span></div><div class="line">子元素是父元素的1<span class="selector-class">.5</span>倍</div></pre></td></tr></table></figure>
-</h4></li>
-<li><p>装饰叠加</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 1. 同时有上划线和下划线</div><div class="line">em &#123;</div><div class="line">	text-decoration: underline overline;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2. 只会有下划线</div><div class="line">em &#123;</div><div class="line">	text-decoration: underline;</div><div class="line">&#125;</div><div class="line">em &#123;</div><div class="line">	text-decoration: overline;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>&lt;del&gt;</code>: 待删除</p>
-</li>
-<li><p><code>&lt;ins&gt;</code>:   待加入</p>
-</li>
-<li><p>尾部:<br><img src="https://ooo.0o0.ooo/2017/06/28/59531fb731923.png" alt="尾部示例"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">small</span>&gt;</span></div><div class="line">       &amp;copy; 2012, Head First Lounge<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">       All trademarks and registered trademarks appearing on this site are </div><div class="line">       the property of their respective owners.</div><div class="line">     <span class="tag">&lt;/<span class="name">small</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"cd"</span>&gt;</span>Buddha Bar<span class="tag">&lt;/<span class="name">span</span>&gt;</span>, <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"artist"</span>&gt;</span>Claude Challe<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>符号代替</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&amp; : &amp;amp;</div><div class="line">© : &amp;copy;</div></pre></td></tr></table></figure>
-</li>
-<li><p>链接颜色</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 默认颜色</div><div class="line">a: link &#123;</div><div class="line">	color: black;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 访问过后的颜色</div><div class="line">a:visited &#123;</div><div class="line">	color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 鼠标悬停上时颜色</div><div class="line">a:hover &#123;</div><div class="line">	color: green;</div><div class="line">&#125;</div><div class="line"></div><div class="line">focus: tab焦点</div><div class="line">active:激活</div></pre></td></tr></table></figure>
-</li>
-<li><p>id &amp; class:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id通常用来指定唯一元素,如footer/header </div><div class="line">id用#来引用</div><div class="line">class用.来引用</div></pre></td></tr></table></figure>
-</li>
-<li><p>指定样式表的设备类型</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"cc.css rel="</span><span class="attr">stylesheet</span>" <span class="attr">media</span> =<span class="string">"screen and (max-device-width:480px)"</span>&gt;</span></div><div class="line">: 有屏幕而且屏幕宽度不超过480px</div><div class="line">media = "print": 打印机</div><div class="line"></div><div class="line">in-device-width/ [orientation:landscape/portrait]</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@media screen and (min-device-width: 480px)&#123;</div><div class="line">	#guraantee&#123;</div><div class="line">		margin-right: 250px;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media screen and (max-device-width:479px) and (orientation:portrait)&#123;</div><div class="line">	#guraantee &#123;</div><div class="line">		margin-right: 30px;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media print&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li><p>div 与 span</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div 针对块元素, span针对内联元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>伪类: html中没有相关代码,由浏览器来进行指定: 如 a:link ,a:visited</p>
-</li>
-<li><p>布局方式: 块元素自上而下, 内联元素自左而右</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 块元素计算空间会将重叠的外边距中最大的外边距来计算</div><div class="line">2. 而内联元素则会取二者之和,内联元素的外边距通常用于img</div><div class="line">3. 如果一个块元素嵌套在另一个块元素中,且都有外边距,如果外边的元素有边框,则不会折叠,否则,会折叠</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置布局方式:以浮动在右边为例</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. 要让a块元素在b块元素后浮动,就要将a块元素的代码移到b块元素后</div><div class="line">2. 设置a的width,float</div><div class="line">3. 设置主内容栏的右边距= a的width+ a的内外边距*2</div><div class="line">注意: 通常浮动边栏,主显示内容随浏览器的宽度进行变动</div></pre></td></tr></table></figure>
-</li>
-<li><p>浮动元素的外边距不会折叠,因为浮动元素的外边距不会碰到正常流中的外边距</p>
-</li>
-<li><p>clear: 会使块元素下移,直到两边没有浮动元素挨着</p>
-</li>
-<li><p><strong>float</strong>: 块元素的浮动[left right]</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">左松右紧</div><div class="line">右紧左松</div><div class="line">两种设计: 对边栏内容设置float right</div><div class="line">		 对主内容设置float left</div></pre></td></tr></table></figure>
-</li>
-<li><p>流体布局 vs 冻结布局</p>
-</li>
-<li><p><code>position</code>属性</p>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static: 默认状态</div><div class="line">absolute: 相对于当前页面的位置</div><div class="line">fixed: 相对于浏览器窗口的位置</div><div class="line">relative:元素正常地流入页面,只是在显示之前要进行偏移</div></pre></td></tr></table></figure>
-<ol>
-<li>创建table视图时,borderspacing与外边距不会折叠</li>
-<li><p>vertical-align: 垂直对齐: top/bottom/middle</p>
-</li>
-<li><p>插入视频</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">controls : 是否显示控制器</div><div class="line">autoplay: 是否自动播放</div><div class="line"> <span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">width</span>=<span class="string">"512"</span> <span class="attr">height</span>=<span class="string">"288"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/tweetsip.webom"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/tweetsip.mp4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/tweetsip.ogv"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">p</span>&gt;</span>dslfasaflakdaldf<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">video</span>&gt;</span></div></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;CSS&quot;&gt;&lt;a href=&quot;#CSS&quot; class=&quot;headerlink&quot; title=&quot;CSS&quot;&gt;&lt;/a&gt;CSS&lt;/h2&gt;&lt;h3 id=&quot;一-简介&quot;&gt;&lt;a href=&quot;#一-简介&quot; class=&quot;headerlink&quot; title=&quot;一 简介&quot;&gt;&lt;/a&gt;一 简
-    
-    </summary>
-    
-    
-      <category term="html" scheme="https://neareven.github.io/tags/html/"/>
     
   </entry>
   
