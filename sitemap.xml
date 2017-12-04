@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://neareven.github.io/2017/12/03/36-methodSwizzle/</loc>
+    
+    <lastmod>2017-12-04T07:14:30.504Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://neareven.github.io/2017/11/27/32-runtime/</loc>
     
     <lastmod>2017-12-04T06:07:57.698Z</lastmod>
@@ -233,7 +240,7 @@
   </url>
   
   <url>
-    <loc>https://neareven.github.io/tags/index.html</loc>
+    <loc>https://neareven.github.io/project/index.html</loc>
     
     <lastmod>2017-07-05T11:33:27.000Z</lastmod>
     
@@ -247,7 +254,7 @@
   </url>
   
   <url>
-    <loc>https://neareven.github.io/project/index.html</loc>
+    <loc>https://neareven.github.io/tags/index.html</loc>
     
     <lastmod>2017-07-05T11:33:27.000Z</lastmod>
     
